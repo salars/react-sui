@@ -1,0 +1,56 @@
+@import '../../css/color';
+.modal-container{
+  position:absolute;
+  top:0;
+  z-index:100;
+  height:100%;
+  width:100%;
+  .mask{
+    background:rgba(0,0,0,.35);
+    height:100%;
+    width:100%;
+  }
+  @modal-size:14rem;
+  .modal-wrapper{
+    position:absolute;
+    background:@dark-grey;
+    border-radius:.5rem;
+    width:@modal-size;
+    left:50%;
+    margin-left:-@modal-size/2;
+    top:50%;
+    margin-top:-7rem;
+    .modal-msg{
+      padding:2rem 1rem;
+      text-align:center;
+      border-radius:.5rem;
+      color:@dark-khaki;
+      font-size:.7rem;
+    }
+    .button-container{
+      display:-webkit-box;
+      display:flex;
+      padding-bottom:1rem;
+      &>li{
+        -webkit-box-flex:1;
+        flex:1;
+        text-align:center;
+        font-size:.7rem;
+        line-height:1.75rem;
+        background-color:@dark-khaki;
+        margin:.5rem;
+        border-radius:.25rem;
+        border:1px solid @dark-khaki;
+        color:#000;
+        &:last-child{
+          border-right:none;
+        }
+        &.bordered{
+          background-color:transparent;
+          border:1px solid @dark-khaki;
+          color:@dark-khaki;
+        }
+      }
+    }
+  }
+}
