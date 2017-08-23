@@ -17,6 +17,9 @@ base.plugins.push(
 base.module.loaders.push({
     test: /\.less$/,
     loader: "style-loader?convertToAbsoluteUrls!css-loader?sourceMap!less-loader?sourceMap"
+},{
+    test:/\.css$/,
+    loader:"style-loader!css-loader"
 });
 
 

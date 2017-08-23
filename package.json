@@ -1,14 +1,15 @@
 {
   "name": "react-sui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react ui kit",
-  "main":"src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development node ./scripts/server.js",
     "build:site": "cross-env NODE_ENV=production webpack --config ./scripts/webpack.prod.js",
     "icon": "node ./scripts/generateIcon.js",
-    "build:kit":"cross-env NODE_ENV=production babel ./src  --out-dir ./build",
+    "build:kit": "cross-env NODE_ENV=production babel ./src  --out-dir ./build",
+    "deploy:kit": "cd build && npm publish && cd -",
     "mock": "node ./api/mock.js"
   },
   "author": "",
@@ -52,7 +53,10 @@
     "core-decorators": "^0.17.0",
     "history": "^4.6.1",
     "immutable": "^3.8.1",
+    "material-ui": "^0.19.0",
     "md5": "^2.2.1",
+    "mobx": "^3.2.2",
+    "mobx-react": "^4.2.2",
     "query-string": "^4.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -61,6 +65,7 @@
     "react-router-dom": "^4.1.0",
     "react-router-redux": "lastest",
     "react-tap-event-plugin": "^2.0.1",
+    "recompose": "^0.25.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   }

@@ -30,7 +30,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             favicon:'./scripts/favicon.ico',
-            title: "联盟证券",
+            title: "SUI - React UI kit",
             template: APP_PATH + "/scripts/index.html"
         }),
         //new webpack.ProvidePlugin({ })

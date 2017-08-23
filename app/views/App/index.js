@@ -1,10 +1,8 @@
 import React from 'react';
-import "./style.less";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actionCreators from './actions';
 import Home from '../Home';
-import Demo from '../Demo';
 import { Route } from 'react-router';
 
 export class App extends React.Component {
@@ -13,7 +11,6 @@ export class App extends React.Component {
             <div>
                 <Route path="/" component={ Home } exact/>
                 <Route path="/home" component={ Home } />
-                <Route path="/demo" component={ Demo } />
             </div>
         )
     }
