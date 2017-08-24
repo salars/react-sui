@@ -28,19 +28,6 @@ export default class Home extends React.Component {
             <Container fluid={ this.state.fluid }>
                 <Row gutter>
                     <Col sm="12">
-                        <Panel title="Dropdown">
-                            <Dropdown label="Dropdown" type="primary" options={
-                                [
-                                    { label: "option1", fnClick: ()=>{console.log("1")} },
-                                    { label: "option2", fnClick: ()=>{console.log("2")} },
-                                    { label: "option3", fnClick: ()=>{console.log("3")} },
-                                ]
-                            }/>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row gutter>
-                    <Col sm="12">
                         <Panel title="Theme">
                             <ButtonGroup>
                                 <Button onClick={ _ => {
@@ -139,6 +126,41 @@ export default class Home extends React.Component {
                                     <ColorBlock content="col-4"/>
                                 </Col>
                             </Row>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col sm="12">
+                        <Panel title="Dropdown">
+                            <Section title="Dropdown size type">
+                                <Dropdown label="Dropdown" size="lg" options={[
+                                    { label: "option1", fnClick: ()=>{console.log("1")} },
+                                    { label: "option2",disabled:true, fnClick: ()=>{console.log("2")} },
+                                    { label: "option3", fnClick: ()=>{console.log("3")} },
+                                ]}/>
+                                <Dropdown label="primary" type="primary" options={[
+                                    { label: "option1" },
+                                    { label: "option2" },
+                                    { label: "option3" },
+                                ]}/>
+                                <Dropdown label="warning" type="warning" size="sm" options={[
+                                    { label: "option1" },
+                                    { label: "option2" },
+                                    { label: "option3" },
+                                ]}/>
+                            </Section>
+                            <Section title="direction split">
+                                <Dropdown label="Dropup" up split options={[
+                                    { label: "option1" },
+                                    { label: "option2" },
+                                    { label: "option3" },
+                                ]}/>
+                                <Dropdown label="Dropdown right" right options={[
+                                    { label: "option1" },
+                                    { label: "option2" },
+                                    { label: "option3" },
+                                ]}/>
+                            </Section>
                         </Panel>
                     </Col>
                 </Row>
