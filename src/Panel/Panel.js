@@ -7,14 +7,14 @@ class Panel extends Component {
             <div style={{
                 backgroundColor: t.PANEL_BG,
                 borderRadius: t.BORDER_RADIUS,
-                padding: t.GRID_GUTTER_HALF_WIDTH
+                padding: t.GRID_GUTTER_HALF_WIDTH,
             }}>
                 {
                  title?
                 <div style={ {
                     fontSize:t.FONT_SIZE_LARGE,
                     lineHeight:t.LINE_HEIGHT_BASE,
-                    color:t.GRAY
+                    color:t.GRAY,
                 } }>{title}</div>
                      :null
                 }

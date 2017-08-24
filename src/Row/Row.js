@@ -3,9 +3,9 @@ import { composeTheme } from '../helpers';
 
 class Row extends Component {
    render(){
-       const { t } = this.props;
+       const { t,gutter } = this.props;
        return (
-           <div style={{marginBottom:t.GRID_GUTTER_HALF_WIDTH}}>
+           <div className="row" style={ { marginBottom: gutter ? t.GRID_GUTTER_HALF_WIDTH : 0} }>
                {
                    this.props.children
                }

@@ -13,8 +13,9 @@ class Container extends Component {
             <div className={className}
                  style={
                      {
-                         width: fluid ? t.CONTAINER_FULL_WIDTH : t.CONTAINER_FIXED_WIDTH,
-                         margin:"0 auto"
+                         width: fluid ? 'auto': t.CONTAINER_FIXED_WIDTH,
+                         margin:"0 auto",
+                         padding:`0 ${t.GRID_GUTTER_HALF_WIDTH}px 0`
                      }
                  }>
                 {
