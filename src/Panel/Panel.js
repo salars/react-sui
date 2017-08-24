@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import {composeTheme} from '../helpers';
+import PropTypes from 'prop-types';
 class Panel extends Component {
+    static props = {
+      type: PropTypes.string
+    };
+    static defaultProps = {
+        type:"default"
+    };
     render() {
-        const {t,title} = this.props;
+        const {t,title,type} = this.props;
         return (
-            <div style={{
-                backgroundColor: t.PANEL_BG,
-                borderRadius: t.BORDER_RADIUS,
-                padding: t.GRID_GUTTER_HALF_WIDTH,
-            }}>
+            <div className={`panel panel-${type}`}>
                 {
                  title?
                 <div style={ {
@@ -18,9 +21,11 @@ class Panel extends Component {
                 } }>{title}</div>
                      :null
                 }
+                <div className="panel-body">
                 {
                     this.props.children
                 }
+                </div>
             </div>
         )
     }
