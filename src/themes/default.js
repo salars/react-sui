@@ -9,6 +9,7 @@ export const GRAY_BOLD = "#868e96";
 export const GRAY_LIGHT = "#777";
 export const GRAY_LIGHTER = "#eee";
 export const PRIMARY_COLOR = "#337ab7";
+export const BREAD_COLOR = "#007bff";
 export const INFO_COLOR = "#5bc0de";
 export const WARNING_COLOR = "#f0ad4e";
 export const DANGER_COLOR = "#d9534f";

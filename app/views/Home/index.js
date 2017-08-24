@@ -15,8 +15,8 @@ const ColorBlock = (props) => {
             background: "#e2f2f0",
             height: "30px",
             textAlign: "center",
-            lineHeight:"30px",
-            fontSize:"16px"
+            lineHeight: "30px",
+            fontSize: "16px"
         }}>{props.content}</div> )
 };
 export default class Home extends React.Component {
@@ -26,15 +26,49 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <Container fluid={ this.state.fluid }>
+            <Container fluid={this.state.fluid}>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="BreadCrumbs">
+                            <Section title="BreadCrumb single">
+                                <BreadCrumb pathInfo={[
+                                    {content: 'dashabi'}
+                                ]}/>
+                            </Section>
+                            <Section title="BreadCrumbs">
+                                <BreadCrumb pathInfo={[
+                                    {content: 'shabi', url: 'www.baidu.com'},
+                                    {content: 'dashabi'}
+                                ]}/>
+                            <BreadCrumb pathInfo={[
+                                {content: 'shabi', url: 'www.baidu.com'},
+                                {content: 'shabi', url: 'www.baidu.com'},
+                                {content: 'dashabi'}
+                            ]}/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
                 <Row>
                     <Col sm="12">
                         <Panel title="Dropdown">
                             <Dropdown label="Dropdown" type="primary" options={
                                 [
-                                    { label: "option1", fnClick: ()=>{console.log("1")} },
-                                    { label: "option2", fnClick: ()=>{console.log("2")} },
-                                    { label: "option3", fnClick: ()=>{console.log("3")} },
+                                    {
+                                        label: "option1", fnClick: () => {
+                                        console.log("1")
+                                    }
+                                    },
+                                    {
+                                        label: "option2", fnClick: () => {
+                                        console.log("2")
+                                    }
+                                    },
+                                    {
+                                        label: "option3", fnClick: () => {
+                                        console.log("3")
+                                    }
+                                    },
                                 ]
                             }/>
                         </Panel>
@@ -44,17 +78,17 @@ export default class Home extends React.Component {
                     <Col sm="12">
                         <Panel title="Theme">
                             <ButtonGroup>
-                                <Button onClick={ _ => {
+                                <Button onClick={_ => {
                                     themeStore.current = "default";
                                 }} label="Default Theme" type="primary"/>
-                                <Button onClick={ _ => {
+                                <Button onClick={_ => {
                                     themeStore.current = "custom";
                                 }} label="Black Theme" type="primary"/>
                             </ButtonGroup>
                         </Panel>
                     </Col>
                 </Row>
-                <Row >
+                <Row>
                     <Col md="12">
                         <Panel title="Container">
                             <ButtonGroup>
@@ -72,48 +106,48 @@ export default class Home extends React.Component {
                         </Panel>
                     </Col>
                 </Row>
-                <Row >
+                <Row>
                     <Col md="12">
                         <Panel title="Buttons">
                             <Section title="Button Theme">
                                 <ButtonGroup>
-                                    <Button onClick={ _ => {
-                                    } }
+                                    <Button onClick={_ => {
+                                    }}
                                             label="Primary" type="primary"/>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Warning" type="warning"/>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Success" type="success"/>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Danger" type="danger"/>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Info" type="info"/>
                                 </ButtonGroup>
                             </Section>
                             <Section title="Button Size">
                                 <p>
-                                    <Button onClick={ _ => {
-                                    } }
+                                    <Button onClick={_ => {
+                                    }}
                                             label="Large" type="primary"
                                             size="lg"/>
                                 </p>
                                 <p>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Normal" type="primary"/>
                                 </p>
                                 <p>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Small" type="primary" size="sm"/>
                                 </p>
                                 <p>
-                                    <Button onClick={ _ => {
+                                    <Button onClick={_ => {
                                     }} label="Extra Small" type="primary" size="xs"/>
                                 </p>
                             </Section>
                         </Panel>
                     </Col>
                 </Row>
-                <Row >
+                <Row>
                     <Col md="12">
                         <Panel title="Columns">
                             <Row showGrid>
@@ -148,18 +182,6 @@ export default class Home extends React.Component {
                                     <ColorBlock content="col-4"/>
                                 </Col>
                             </Row>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row gutter>
-                    <Col md="12">
-                        <Panel title="BreadCrumbs">
-                            <Section title="BreadCrumb single">
-                                <BreadCrumb pathInfo={[
-                                    {content:'shabi'},
-                                    {content:'dashabi'}
-                                ]}/>
-                            </Section>
                         </Panel>
                     </Col>
                 </Row>
