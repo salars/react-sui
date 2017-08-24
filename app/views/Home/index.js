@@ -7,6 +7,7 @@ import Section from 'react-sui/Section';
 import Panel from 'react-sui/Panel';
 import Row from 'react-sui/Row';
 import Col from 'react-sui/Col';
+import BreadCrumb from 'react-sui/BreadCrumb';
 
 const ColorBlock = (props) => {
     return (
@@ -147,6 +148,18 @@ export default class Home extends React.Component {
                                     <ColorBlock content="col-4"/>
                                 </Col>
                             </Row>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="BreadCrumbs">
+                            <Section title="BreadCrumb single">
+                                <BreadCrumb pathInfo={[
+                                    {content:'shabi'},
+                                    {content:'dashabi'}
+                                ]}/>
+                            </Section>
                         </Panel>
                     </Col>
                 </Row>

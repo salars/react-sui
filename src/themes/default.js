@@ -5,6 +5,7 @@ export const PANEL_BG = WHITE;
 export const GRAY_DARKER = "#222";
 export const GRAY_DARK = "#333";
 export const GRAY = "#555";
+export const GRAY_BOLD = "#868e96";
 export const GRAY_LIGHT = "#777";
 export const GRAY_LIGHTER = "#eee";
 export const PRIMARY_COLOR = "#337ab7";
