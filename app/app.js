@@ -9,7 +9,6 @@ import App from 'views/App';
 import store from './store';
 import SuiThemeProvider from 'react-sui/SuiThemeProvider';
 import "./css/style.less";
-import "./css/bootstrap.min.css";
 
 export const browserHistory = createBrowserHistory();
 export const middleware = routerMiddleware(browserHistory);

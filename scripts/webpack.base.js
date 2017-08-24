@@ -29,7 +29,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            favicon:'./scripts/favicon.ico',
+            //favicon:'./scripts/favicon.ico',
             title: "SUI - React UI kit",
             template: APP_PATH + "/scripts/index.html"
         }),
