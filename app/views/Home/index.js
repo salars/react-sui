@@ -2,6 +2,7 @@ import React from 'react';
 import Container from 'react-sui/Container';
 import themeStore from 'react-sui/store/theme';
 import {Button, ButtonGroup} from 'react-sui/Button';
+import Dropdown from 'react-sui/Dropdown';
 import Section from 'react-sui/Section';
 import Panel from 'react-sui/Panel';
 import Row from 'react-sui/Row';
@@ -25,6 +26,19 @@ export default class Home extends React.Component {
     render() {
         return (
             <Container fluid={ this.state.fluid }>
+                <Row gutter>
+                    <Col sm="12">
+                        <Panel title="Dropdown">
+                            <Dropdown label="Dropdown" type="primary" options={
+                                [
+                                    { label: "option1", fnClick: ()=>{console.log("1")} },
+                                    { label: "option2", fnClick: ()=>{console.log("2")} },
+                                    { label: "option3", fnClick: ()=>{console.log("3")} },
+                                ]
+                            }/>
+                        </Panel>
+                    </Col>
+                </Row>
                 <Row gutter>
                     <Col sm="12">
                         <Panel title="Theme">
