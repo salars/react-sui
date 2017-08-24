@@ -14,11 +14,7 @@ class Panel extends Component {
             <div className={`panel panel-${type}`}>
                 {
                  title?
-                <div style={ {
-                    fontSize:t.FONT_SIZE_LARGE,
-                    lineHeight:t.LINE_HEIGHT_BASE,
-                    color:t.GRAY,
-                } }>{title}</div>
+                <div className="panel-heading">{title}</div>
                      :null
                 }
                 <div className="panel-body">

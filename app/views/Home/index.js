@@ -25,9 +25,9 @@ export default class Home extends React.Component {
     render() {
         return (
             <Container fluid={ this.state.fluid }>
-                <Row gutter>
+                <Row >
                     <Col sm="12">
-                        <Panel title="Theme">
+                        <Panel title="Theme" type="primary">
                             <ButtonGroup>
                                 <Button onClick={ _ => {
                                     themeStore.current = "default";
@@ -39,7 +39,7 @@ export default class Home extends React.Component {
                         </Panel>
                     </Col>
                 </Row>
-                <Row gutter>
+                <Row >
                     <Col md="12">
                         <Panel title="Container">
                             <ButtonGroup>
@@ -57,7 +57,7 @@ export default class Home extends React.Component {
                         </Panel>
                     </Col>
                 </Row>
-                <Row gutter>
+                <Row >
                     <Col md="12">
                         <Panel title="Buttons">
                             <Section title="Button Theme">
@@ -76,29 +76,37 @@ export default class Home extends React.Component {
                                 </ButtonGroup>
                             </Section>
                             <Section title="Button Size">
-                                <ButtonGroup>
+                                <p>
                                     <Button onClick={ _ => {
                                     } }
                                             label="Large" type="primary"
                                             size="lg"/>
+                                </p>
+                                <p>
                                     <Button onClick={ _ => {
                                     }} label="Normal" type="primary"/>
+                                </p>
+                                <p>
                                     <Button onClick={ _ => {
                                     }} label="Small" type="primary" size="sm"/>
-                                </ButtonGroup>
+                                </p>
+                                <p>
+                                    <Button onClick={ _ => {
+                                    }} label="Extra Small" type="primary" size="xs"/>
+                                </p>
                             </Section>
                         </Panel>
                     </Col>
                 </Row>
-                <Row gutter>
+                <Row >
                     <Col md="12">
                         <Panel title="Columns">
-                            <Row gutter>
+                            <Row showGrid>
                                 <Col md="12">
                                     <ColorBlock content="col-12"/>
                                 </Col>
                             </Row>
-                            <Row gutter>
+                            <Row showGrid>
                                 <Col md="8">
                                     <ColorBlock content="col-8"/>
                                 </Col>
@@ -106,7 +114,7 @@ export default class Home extends React.Component {
                                     <ColorBlock content="col-4"/>
                                 </Col>
                             </Row>
-                            <Row gutter>
+                            <Row showGrid>
                                 <Col md="6">
                                     <ColorBlock content="col-6"/>
                                 </Col>
@@ -114,7 +122,7 @@ export default class Home extends React.Component {
                                     <ColorBlock content="col-6"/>
                                 </Col>
                             </Row>
-                            <Row gutter>
+                            <Row showGrid>
                                 <Col md="4">
                                     <ColorBlock content="col-4"/>
                                 </Col>
