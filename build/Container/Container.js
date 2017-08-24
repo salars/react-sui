@@ -24,35 +24,39 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SuiThemeProvider = function (_Component) {
-    _inherits(SuiThemeProvider, _Component);
+var Container = function (_Component) {
+    _inherits(Container, _Component);
 
-    function SuiThemeProvider() {
-        _classCallCheck(this, SuiThemeProvider);
+    function Container() {
+        _classCallCheck(this, Container);
 
-        return _possibleConstructorReturn(this, (SuiThemeProvider.__proto__ || Object.getPrototypeOf(SuiThemeProvider)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).apply(this, arguments));
     }
 
-    _createClass(SuiThemeProvider, [{
+    _createClass(Container, [{
         key: 'render',
         value: function render() {
-            var t = this.props.t;
+            var _props = this.props,
+                fluid = _props.fluid,
+                className = _props.className,
+                t = _props.t;
 
             return _react2.default.createElement(
                 'div',
-                { style: {
-                        fontSize: (0, _helpers.rem)(t.FONT_SIZE_BASE),
-                        backgroundColor: t.BODY_BG
+                { className: className,
+                    style: {
+                        width: fluid ? t.CONTAINER_FULL_WIDTH : t.CONTAINER_FIXED_WIDTH,
+                        margin: "0 auto"
                     } },
                 this.props.children
             );
         }
     }]);
 
-    return SuiThemeProvider;
+    return Container;
 }(_react.Component);
 
-SuiThemeProvider.props = {
-    theme: _propTypes2.default.string
+Container.props = {
+    fluid: _propTypes2.default.bool
 };
-exports.default = (0, _helpers.composeTheme)(SuiThemeProvider);
+exports.default = (0, _helpers.composeTheme)(Container);

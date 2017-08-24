@@ -1,10 +1,11 @@
 import React , { Component } from 'react';
 import { composeTheme } from '../helpers';
 
-class Grid extends Component {
+class ListItem extends Component {
     render(){
+        const { t } = this.props;
         return (
-            <div style={{display:"flex"}}>
+            <div style={ {marginRight:t.GRID_GUTTER_HALF_WIDTH,verticalAlign:"middle",display:"inline-block"} }>
                 {
                     this.props.children
                 }
@@ -13,4 +14,4 @@ class Grid extends Component {
     }
 }
 
-export default composeTheme(Grid);
+export default composeTheme(ListItem);

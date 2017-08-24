@@ -1,16 +1,17 @@
 import React , { Component } from 'react';
+import ClearFix from '../ClearFix';
 import { composeTheme } from '../helpers';
 
-class Grid extends Component {
+class List extends Component {
     render(){
         return (
-            <div style={{display:"flex"}}>
+            <ClearFix>
                 {
                     this.props.children
                 }
-            </div>
+            </ClearFix>
         )
     }
 }
 
-export default composeTheme(Grid);
+export default composeTheme(List);

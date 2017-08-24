@@ -1,9 +1,11 @@
 import React,{ Component } from 'react';
+import { composeTheme } from '../helpers';
 
-export default class Row extends Component {
+class Row extends Component {
    render(){
+       const { t } = this.props;
        return (
-           <div>
+           <div style={{marginBottom:t.GRID_GUTTER_HALF_WIDTH}}>
                {
                    this.props.children
                }
@@ -11,3 +13,4 @@ export default class Row extends Component {
        )
    }
 }
+export default composeTheme(Row);

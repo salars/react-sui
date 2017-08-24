@@ -19,3 +19,7 @@ export const composeTheme = compose({t: themeStore});
 export const rem = (size)=>{
     return size+"rem";
 };
+
+export const getColorByType = (type,t)=>{
+    return t[type.toUpperCase()+"_COLOR"];
+};

@@ -7,6 +7,7 @@ import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 import {Route} from 'react-router';
 import App from 'views/App';
 import store from './store';
+import SuiThemeProvider from 'react-sui/SuiThemeProvider';
 import "./css/style.less";
 
 export const browserHistory = createBrowserHistory();
@@ -17,7 +18,9 @@ class MainApp extends React.Component {
         return (
             <Provider store={ store }>
                 <ConnectedRouter history={ browserHistory }>
+                    <SuiThemeProvider>
                     <Route path="/" component={App}/>
+                    </SuiThemeProvider>
                 </ConnectedRouter>
             </Provider>
         )

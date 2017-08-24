@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {composeTheme,rem}  from '../helpers';
+import {composeTheme}  from '../helpers';
 
 class Container extends Component {
     static props = {

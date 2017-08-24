@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
-import { composeTheme,rem } from '../helpers';
+import { composeTheme } from '../helpers';
 class SuiThemeProvider extends Component {
     static props = {
         theme:PropTypes.string
@@ -9,8 +9,9 @@ class SuiThemeProvider extends Component {
         const { t } = this.props;
         return (
             <div style={ {
-                fontSize:rem(t.FONT_SIZE_BASE),
-                backgroundColor:t.BODY_BG
+                fontSize:t.FONT_SIZE_BASE,
+                backgroundColor:t.BODY_BG,
+                minHeight:'100%'
             }}>
                 {
                     this.props.children
