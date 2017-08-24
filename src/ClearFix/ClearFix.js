@@ -1,7 +1,6 @@
 import React from 'react';
 export default (props) => {
-    return (<div>
+    return (<div className="clearfix">
         {props.children}
-        <div style={{clear: "both"}}/>
     </div>);
 }

@@ -5,13 +5,11 @@ import { List,ListItem } from '../List';
 class ButtonGroup extends Component {
     render(){
         return (
-            <List>
+            <div className="btn-group">
                 {
-                    this.props.children.map((child,idx)=>{
-                       return <ListItem key={idx}>{child}</ListItem>;
-                    })
+                    this.props.children
                 }
-            </List>
+            </div>
         )
     }
 }

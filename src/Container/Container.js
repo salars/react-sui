@@ -10,14 +10,7 @@ class Container extends Component {
     render() {
         const {fluid, className, t} = this.props;
         return (
-            <div className={className}
-                 style={
-                     {
-                         width: fluid ? 'auto': t.CONTAINER_FIXED_WIDTH,
-                         margin:"0 auto",
-                         padding:`0 ${t.GRID_GUTTER_HALF_WIDTH}px 0`
-                     }
-                 }>
+            <div className={`container${fluid? "-fluid":""} ${className || ""}`}>
                 {
                     this.props.children
                 }
