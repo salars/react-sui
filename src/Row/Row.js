@@ -1,11 +1,18 @@
 import React,{ Component } from 'react';
 import { composeTheme } from '../helpers';
+import PropTypes from 'prop-types';
 
 class Row extends Component {
+    static props = {
+      showGrid:PropTypes.bool
+    };
+    static defaultProps = {
+        showGrid:false
+    };
    render(){
-       const { t,gutter } = this.props;
+       const { showGrid } = this.props;
        return (
-           <div className="row" style={ { marginBottom: gutter ? t.GRID_GUTTER_HALF_WIDTH : 0} }>
+           <div className={`row ${showGrid ? " show-grid":""}`}>
                {
                    this.props.children
                }
