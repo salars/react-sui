@@ -33,18 +33,18 @@ export default class Home extends React.Component {
                         <Panel title="BreadCrumbs">
                             <Section title="BreadCrumb single">
                                 <BreadCrumb pathInfo={[
-                                    {content: 'dashabi'}
+                                    {content: 'label'}
                                 ]}/>
                             </Section>
                             <Section title="BreadCrumbs">
                                 <BreadCrumb pathInfo={[
-                                    {content: 'shabi', url: 'www.baidu.com'},
-                                    {content: 'dashabi'}
+                                    {content: 'label1', url: 'www.baidu.com'},
+                                    {content: 'label2'}
                                 ]}/>
                                 <BreadCrumb pathInfo={[
-                                    {content: 'shabi', url: 'www.baidu.com'},
-                                    {content: 'shabi', url: 'www.baidu.com'},
-                                    {content: 'dashabi'}
+                                    {content: 'label1', url: 'www.baidu.com'},
+                                    {content: 'label2', url: 'www.baidu.com'},
+                                    {content: 'label3'}
                                 ]}/>
                             </Section>
                         </Panel>

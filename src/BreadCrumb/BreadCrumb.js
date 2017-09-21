@@ -17,7 +17,7 @@ class BreadCrumb extends Component {
                         pathInfo.map((item, i) => {
                             return (
                                 <li className={`breadcrumb-item ${item.url?"":' active'}`} key={i} onClick={() => {
-                                    item.url
+                                window.location.href = item.url;
                                 }}>
                                     {
                                         item.url?

@@ -4,3 +4,4 @@ node_modules/
 *.log
 yarn.lock
 
+/app/views/Home/index.js
