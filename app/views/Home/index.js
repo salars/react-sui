@@ -8,6 +8,7 @@ import Panel from 'react-sui/Panel';
 import Row from 'react-sui/Row';
 import Col from 'react-sui/Col';
 import BreadCrumb from 'react-sui/BreadCrumb';
+import Badges from 'react-sui/Badges';
 
 const ColorBlock = (props) => {
     return (
@@ -40,11 +41,29 @@ export default class Home extends React.Component {
                                     {content: 'shabi', url: 'www.baidu.com'},
                                     {content: 'dashabi'}
                                 ]}/>
-                            <BreadCrumb pathInfo={[
-                                {content: 'shabi', url: 'www.baidu.com'},
-                                {content: 'shabi', url: 'www.baidu.com'},
-                                {content: 'dashabi'}
-                            ]}/>
+                                <BreadCrumb pathInfo={[
+                                    {content: 'shabi', url: 'www.baidu.com'},
+                                    {content: 'shabi', url: 'www.baidu.com'},
+                                    {content: 'dashabi'}
+                                ]}/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="Badges">
+                            <Section>
+                                <a href="#">inBox<Badges label="3"/></a>
+                            </Section>
+                            <Section>
+                                <ButtonGroup>
+                                    <Button onClick={_ => {
+                                    }}
+                                            label="Primary" type="primary">
+                                        <Badges label="4"/>
+                                    </Button>
+                                </ButtonGroup>
                             </Section>
                         </Panel>
                     </Col>

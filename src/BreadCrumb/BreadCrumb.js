@@ -6,20 +6,6 @@ class BreadCrumb extends Component {
     static props = {
         pathInfo: PropTypes.array,
     };
-    // getStyle(){
-    //     const { pathInfo,t } = this.props;
-    //     let fontColor = t.WHITE;
-    //     pathInfo.map((item,i)=>{
-    //         if(item.url){
-    //             fontColor = t.PRIMARY_COLOR
-    //         }else{
-    //             fontColor = 'white'
-    //         }
-    //     });
-    //     return{
-    //        color: fontColor
-    //     }
-    // }
     render() {
         const {t, pathInfo} = this.props;
         return (
