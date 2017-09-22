@@ -9,6 +9,7 @@ import Row from 'react-sui/Row';
 import Col from 'react-sui/Col';
 import BreadCrumb from 'react-sui/BreadCrumb';
 import Badges from 'react-sui/Badges';
+import CheckBox from 'react-sui/CheckBox';
 
 const ColorBlock = (props) => {
     return (
@@ -22,7 +23,8 @@ const ColorBlock = (props) => {
 };
 export default class Home extends React.Component {
     state = {
-        fluid: false
+        fluid: false,
+        checked:false
     };
 
     render() {
@@ -210,6 +212,15 @@ export default class Home extends React.Component {
                                     { label: "option2" },
                                     { label: "option3" },
                                 ]}/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="CheckBox">
+                            <Section title="CheckBox">
+                                <CheckBox text="嘿嘿嘿" fnClick={(name,checked)=>{this.setState({checked})}} name='1' checked={this.state.checked}/>
                             </Section>
                         </Panel>
                     </Col>
