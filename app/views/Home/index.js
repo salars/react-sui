@@ -8,6 +8,8 @@ import Panel from 'react-sui/Panel';
 import Row from 'react-sui/Row';
 import Col from 'react-sui/Col';
 import BreadCrumb from 'react-sui/BreadCrumb';
+import DataTable from 'react-sui/DataTable';
+import Pagination from 'react-sui/Pagination';
 
 const ColorBlock = (props) => {
     return (
@@ -19,9 +21,11 @@ const ColorBlock = (props) => {
             fontSize: "16px"
         }}>{props.content}</div> )
 };
+let current = 1;
 export default class Home extends React.Component {
     state = {
-        fluid: false
+        fluid: false,
+        current: 1,
     };
 
     render() {
@@ -192,6 +196,37 @@ export default class Home extends React.Component {
                                     { label: "option3" },
                                 ]}/>
                             </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        <Panel title="DataTable">
+                            <DataTable
+                                select
+                                selectAllButton
+                                url="user/list"
+                                config={{
+                                    pageLength: 10
+                                }}
+                                buttons={[
+                                    {label: '按钮1',callback: (res)=>{ console.log(res) } },
+                                    {label: '按钮2',callback: (res)=>{ console.log(res) } }
+                                ]}
+                                columns={[
+                                    { label: 'id',value:'id' },
+                                    { label: '姓名',value:'name',render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
+                                    { label: '昵称',value:'nickName' },
+                                    { label: '手机号',value:'tel' },
+                                ]}
+                            />
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        <Panel title="Pagination">
+                            <Pagination total="103" previousText="上一页" nextText="下一页" goFirstText="首页" goLastText="尾页" current={ this.state.current } change={ (index)=>{this.setState({current:index});console.log(index)}}/>
                         </Panel>
                     </Col>
                 </Row>

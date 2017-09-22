@@ -56,3 +56,5 @@ export const ZINDEX_TOOLTIP = 1070;
 export const ZINDEX_NAVBAR_FIXED = 1030;
 export const ZINDEX_MODAL_BACKGROUND = 1040;
 export const ZINDEX_MODAL = 1050;
+export const TABLE_SELECT_WIDTH = 40;
+export const TABLE_BUTTON_HEIGHT = '1.5rem';
