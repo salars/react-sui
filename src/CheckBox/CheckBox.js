@@ -12,10 +12,6 @@ class CheckBox extends Component {
         fnClick: PropTypes.func,
         checked: PropTypes.bool
     };
-    // state = {
-    //     checked: false
-    // };
-
     check() {
         const {name, fnClick, checked} = this.props;
         fnClick && fnClick(name,!checked)
