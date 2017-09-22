@@ -9,3 +9,31 @@
   background: url(../../src/CheckBox/images/checked.png) no-repeat;
   background-size: 100% 100%;
 }
+.radio-item{
+  display:inline-block;
+  margin-right:.4rem;
+  line-height:1.7rem;
+  vertical-align:middle;
+  cursor:pointer;
+  &:before{
+    content:"";
+    display:inline-block;
+    vertical-align:middle;
+    margin-top:-.1rem;
+    border-radius:50%;
+    width:.7rem;
+    height:.7rem;
+    border:1px solid #999;
+    margin-right:.25rem;
+  }
+  &.disabled{
+    &:before{
+      border-color:#ccc;
+    }
+  }
+  &.checked{
+    &:before{
+      border:.2rem solid #369be9;
+    }
+  }
+}

@@ -12,6 +12,7 @@ import DataTable from 'react-sui/DataTable';
 import Pagination from 'react-sui/Pagination';
 import Badges from 'react-sui/Badges';
 import CheckBox from 'react-sui/CheckBox';
+import Radio from 'react-sui/Radio';
 
 const ColorBlock = (props) => {
     return (
@@ -26,9 +27,13 @@ const ColorBlock = (props) => {
 export default class Home extends React.Component {
     state = {
         fluid: false,
+        checked: false,
         current: 1,
-        checked:false
     };
+
+    radioChange(name, value) {
+        this.setState({val:value});
+    }
 
     render() {
         return (
@@ -189,31 +194,43 @@ export default class Home extends React.Component {
                         <Panel title="Dropdown">
                             <Section title="Dropdown size type">
                                 <Dropdown label="Dropdown" size="lg" options={[
-                                    { label: "option1", fnClick: ()=>{console.log("1")} },
-                                    { label: "option2",disabled:true, fnClick: ()=>{console.log("2")} },
-                                    { label: "option3", fnClick: ()=>{console.log("3")} },
+                                    {
+                                        label: "option1", fnClick: () => {
+                                        console.log("1")
+                                    }
+                                    },
+                                    {
+                                        label: "option2", disabled: true, fnClick: () => {
+                                        console.log("2")
+                                    }
+                                    },
+                                    {
+                                        label: "option3", fnClick: () => {
+                                        console.log("3")
+                                    }
+                                    },
                                 ]}/>
                                 <Dropdown label="primary" type="primary" options={[
-                                    { label: "option1" },
-                                    { label: "option2" },
-                                    { label: "option3" },
+                                    {label: "option1"},
+                                    {label: "option2"},
+                                    {label: "option3"},
                                 ]}/>
                                 <Dropdown label="warning" type="warning" size="sm" options={[
-                                    { label: "option1" },
-                                    { label: "option2" },
-                                    { label: "option3" },
+                                    {label: "option1"},
+                                    {label: "option2"},
+                                    {label: "option3"},
                                 ]}/>
                             </Section>
                             <Section title="direction split">
                                 <Dropdown label="Dropup" up split options={[
-                                    { label: "option1" },
-                                    { label: "option2" },
-                                    { label: "option3" },
+                                    {label: "option1"},
+                                    {label: "option2"},
+                                    {label: "option3"},
                                 ]}/>
                                 <Dropdown label="Dropdown right" right options={[
-                                    { label: "option1" },
-                                    { label: "option2" },
-                                    { label: "option3" },
+                                    {label: "option1"},
+                                    {label: "option2"},
+                                    {label: "option3"},
                                 ]}/>
                             </Section>
                         </Panel>
@@ -255,7 +272,22 @@ export default class Home extends React.Component {
                     <Col md="12">
                         <Panel title="CheckBox">
                             <Section title="CheckBox">
-                                <CheckBox text="嘿嘿嘿" fnClick={(name,checked)=>{this.setState({checked})}} name='1' checked={this.state.checked}/>
+                                <CheckBox text="嘿嘿嘿" fnClick={(name, checked) => {
+                                    this.setState({checked})
+                                }} name='1' checked={this.state.checked}/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="Radio">
+                            <Section title="Radio">
+                                <Radio name="radio" value={ this.state.val } change={(name, value) => {
+                                    return this.radioChange(name, value)
+                                }} config={{
+                                    options: [{value: 0, label: '上网'}, {value: 1, label: '聊天'},{value:2,label:'打游戏'},{value:3,label:'谈恋爱'}]
+                                }}/>
                             </Section>
                         </Panel>
                     </Col>
