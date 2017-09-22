@@ -10,6 +10,8 @@ import Col from 'react-sui/Col';
 import BreadCrumb from 'react-sui/BreadCrumb';
 import DataTable from 'react-sui/DataTable';
 import Pagination from 'react-sui/Pagination';
+import Badges from 'react-sui/Badges';
+import CheckBox from 'react-sui/CheckBox';
 
 const ColorBlock = (props) => {
     return (
@@ -21,11 +23,11 @@ const ColorBlock = (props) => {
             fontSize: "16px"
         }}>{props.content}</div> )
 };
-let current = 1;
 export default class Home extends React.Component {
     state = {
         fluid: false,
         current: 1,
+        checked:false
     };
 
     render() {
@@ -36,19 +38,37 @@ export default class Home extends React.Component {
                         <Panel title="BreadCrumbs">
                             <Section title="BreadCrumb single">
                                 <BreadCrumb pathInfo={[
-                                    {content: 'dashabi'}
+                                    {content: 'label'}
                                 ]}/>
                             </Section>
                             <Section title="BreadCrumbs">
                                 <BreadCrumb pathInfo={[
-                                    {content: 'shabi', url: 'www.baidu.com'},
-                                    {content: 'dashabi'}
+                                    {content: 'label1', url: 'www.baidu.com'},
+                                    {content: 'label2'}
                                 ]}/>
-                            <BreadCrumb pathInfo={[
-                                {content: 'shabi', url: 'www.baidu.com'},
-                                {content: 'shabi', url: 'www.baidu.com'},
-                                {content: 'dashabi'}
-                            ]}/>
+                                <BreadCrumb pathInfo={[
+                                    {content: 'label1', url: 'www.baidu.com'},
+                                    {content: 'label2', url: 'www.baidu.com'},
+                                    {content: 'label3'}
+                                ]}/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="Badges">
+                            <Section>
+                                <a href="#">inBox<Badges label="3"/></a>
+                            </Section>
+                            <Section>
+                                <ButtonGroup>
+                                    <Button onClick={_ => {
+                                    }}
+                                            label="Primary" type="primary">
+                                        <Badges label="4"/>
+                                    </Button>
+                                </ButtonGroup>
                             </Section>
                         </Panel>
                     </Col>
@@ -227,6 +247,15 @@ export default class Home extends React.Component {
                     <Col md="12">
                         <Panel title="Pagination">
                             <Pagination total="103" previousText="上一页" nextText="下一页" goFirstText="首页" goLastText="尾页" current={ this.state.current } change={ (index)=>{this.setState({current:index});console.log(index)}}/>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="CheckBox">
+                            <Section title="CheckBox">
+                                <CheckBox text="嘿嘿嘿" fnClick={(name,checked)=>{this.setState({checked})}} name='1' checked={this.state.checked}/>
+                            </Section>
                         </Panel>
                     </Col>
                 </Row>

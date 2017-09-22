@@ -17,6 +17,7 @@ class Button extends Component {
             <button className={`btn btn-${size} btn-${type}` } onClick={ onClick }
             >
                 { label }
+                { this.props.children }
             </button>
         )
     }
