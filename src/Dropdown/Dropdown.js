@@ -62,7 +62,7 @@ class Dropdown extends Component {
         document.body.addEventListener('click',this.globalEventHandler);
     }
     componentWillUnmount(){
-       document.body.removeEventListener('click',this.globalEventHandler)
+       document.body.removeEventListener('click',this.globalEventHandler);
     }
     render(){
         const { type,t,size,label,options,split,caret,right,up,style } = this.props;

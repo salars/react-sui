@@ -86,13 +86,8 @@ class Select extends Component {
         }
     };
     bodyClickEventHandler(e){
-        let $select = document.querySelectorAll(".select");
-        console.log(e.target);
-        console.log($select);
-        if ($select.length) {
-            if ($select[0] === this.refs.select) {
-                return;
-            }
+        if(e.path.includes(this.refs.select)){
+            return;
         }
         this.setState({showDropdown:false});
     };
@@ -100,7 +95,9 @@ class Select extends Component {
     isEmpty(val){
         return val === "" || val === null || val === undefined;
     };
-
+    componentDidMount(){
+        document.body.addEventListener('click',this.bodyClickEventHandler);
+    }
     componentWillUnmount(){
         document.body.removeEventListener('click', this.bodyClickEventHandler);
     }
