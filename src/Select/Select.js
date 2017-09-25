@@ -3,7 +3,6 @@ import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import {autobind} from 'core-decorators';
 import '../../app/css/normal.less';
-import $ from 'jquery';
 
 
 @autobind
@@ -87,7 +86,9 @@ class Select extends Component {
         }
     };
     bodyClickEventHandler(e){
-        let $select = $(e.target).closest(".select");
+        let $select = document.querySelectorAll(".select");
+        console.log(e.target);
+        console.log($select);
         if ($select.length) {
             if ($select[0] === this.refs.select) {
                 return;
