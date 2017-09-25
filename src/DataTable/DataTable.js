@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { composeTheme,getColorByType } from '../helpers';
 import Pagination from 'react-sui/Pagination';
 import CheckBox from 'react-sui/CheckBox';
+import Select from 'react-sui/Select';
 import defaultConfig from './config';
 import { autobind } from 'core-decorators';
 import './style.less';
@@ -77,13 +78,13 @@ class DataTable extends Component {
 
             //模拟数据
             let data=[];
-            const total = 0;
-            /*for(let i=0;i<pageSize;i++){
+            const total = 104;
+            for(let i=0;i<pageSize;i++){
                 const sum = (pageNum-1)*pageSize+i+1;
                 if(sum<=total){
                     data.push({ id: sum, name:'test'+sum, nickName: 'nick'+sum, tel: '12341341234' });
                 }
-            }*/
+            }
             const { checkAll } = this.state;
 
             let arr = [];
@@ -98,8 +99,7 @@ class DataTable extends Component {
     pageChange(index){//选择页
         this.setState({current:index},()=>{this.getData(index,this.state.config.pageLength)});
     }
-    pageLengthChange(e){
-        const value = e.target.value;
+    pageLengthChange(value){
         const mergeConfig = Object.assign({}, this.state.config, {pageLength: value});
         this.setState({config: mergeConfig,current:1},()=>{
             this.getData(this.state.current,value);
@@ -171,6 +171,10 @@ class DataTable extends Component {
             .replace('_START_',(current-1)*config.pageLength)
             .replace('_END_',(current-1)*config.pageLength+data.length)
             .replace('_TOTAL_',total);
+        let pageLengthConfig = [];
+        for(let i=0;i<config.lengthMenu.length;i++){
+            pageLengthConfig.push({label:config.lengthMenu[i],value:config.lengthMenu[i]});
+        }
         return (
             <div className="data-table">
                 <div style={{marginBottom:t.MARGIN_MEDIUM}} className="buttons">
@@ -258,17 +262,21 @@ class DataTable extends Component {
                             <span style={{marginRight: t.PADDING_SM_HORIZONTAL}}>{ data.length!=0 ? info : config.language.infoEmpty}</span>
                             {
                                 config.paging ?
-                                    <select
-                                        style={{width: '5rem',height: '1.5rem'}}
-                                        value={ config.pageLength }
-                                        onChange={ this.pageLengthChange }
-                                    >
-                                        {
-                                            config.lengthMenu.map((item,i)=>{
-                                                return <option key={i} value={item}>{item}</option>
-                                            })
-                                        }
-                                    </select>
+                                    <div style={{display:'inline-block',width:'5rem'}}>
+                                        <Select
+                                            value={ config.pageLength }
+                                            config={{
+                                                options: pageLengthConfig,
+                                            }}
+                                            change={ (name,value)=>this.pageLengthChange(value) }
+                                        >
+                                            {
+                                                config.lengthMenu.map((item,i)=>{
+                                                    return <option key={i} value={item}>{item}</option>
+                                                })
+                                            }
+                                        </Select>
+                                    </div>
                                     :null
                             }
                         </div>
