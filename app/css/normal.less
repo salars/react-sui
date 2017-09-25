@@ -1,0 +1,94 @@
+//checkBox样式
+.checkBox{
+  display: inline-block;
+  width: .95rem;
+  height: .95rem;
+  background: url(../../src/CheckBox/images/unChecked.png) no-repeat;
+  background-size: 100% 100%;
+}
+.checkBox.checked{
+  background: url(../../src/CheckBox/images/checked.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+//radio样式
+.radio-item{
+  display:inline-block;
+  margin-right:.4rem;
+  line-height:1.7rem;
+  vertical-align:middle;
+  cursor:pointer;
+  &:before{
+    content:"";
+    display:inline-block;
+    vertical-align:middle;
+    margin-top:-.1rem;
+    border-radius:50%;
+    width:.7rem;
+    height:.7rem;
+    border:1px solid #999;
+    margin-right:.25rem;
+  }
+  &.disabled{
+    &:before{
+      border-color:#ccc;
+    }
+  }
+  &.checked{
+    &:before{
+      border:.2rem solid #369be9;
+    }
+  }
+}
+
+//select样式
+.select{
+  &.form-control{
+    height:auto;
+    min-height:1.5rem;
+    .tags-container{
+      margin-top:-.25rem;
+    }
+    .caret{
+      position:absolute;
+      top:.15rem;
+      right:.25rem;
+    }
+  }
+  position:relative;
+  cursor:pointer;
+  .dropdown-toggle{
+    line-height:1.5 - 2*.3rem;
+    .caret{
+      float:right;
+      color:#929292;
+      margin-top:1.5/2-.3rem;
+    }
+  }
+  .dropdown-menu{
+    z-index:99;
+    max-height:15rem;
+    min-width:100%;
+    overflow-y:auto;
+    &>li{
+      line-height:1.5rem;
+      text-indent:.25rem;
+      &:hover{
+        background:#f2f2f2;
+      }
+    }
+  }
+  .select-tags{
+    margin-right:.25rem;
+    background:#f2f2f2;
+    display:inline-block;
+    padding:0 .15rem;
+    position:relative;
+    margin-top:.25rem;
+    .glyphicon{
+      transform:scale(.7);
+      position:relative;
+      top:.15rem;
+    }
+  }
+}

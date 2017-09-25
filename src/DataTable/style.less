@@ -1,0 +1,34 @@
+.data-table {
+  .buttons {
+    > span:not(.table-select-all):hover {
+      background-color: #337ab7;
+      color: #fff;
+    }
+  }
+  thead {
+    .sorting:after {
+      content: "";
+      background: url(./images/sort_default.png) no-repeat;
+      background-size: cover;
+    }
+    .sorting_asc:after {
+      content: "";
+      background: url(./images/sort_asc.png) no-repeat;
+      background-size: cover;
+    }
+    .sorting_desc:after {
+      content: "";
+      background: url(./images/sort_desc.png) no-repeat;
+      background-size: cover;
+    }
+    .sorting:after, .sorting_asc:after, .sorting_desc:after{
+      position: absolute;
+      top: 12px;
+      right: 8px;
+      display: block;
+      width: 13px;
+      height: 13px;
+      opacity: 1;
+    }
+  }
+}
