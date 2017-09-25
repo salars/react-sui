@@ -13,6 +13,7 @@ import Pagination from 'react-sui/Pagination';
 import Badges from 'react-sui/Badges';
 import CheckBox from 'react-sui/CheckBox';
 import Radio from 'react-sui/Radio';
+import Select from 'react-sui/Select';
 
 const ColorBlock = (props) => {
     return (
@@ -35,6 +36,10 @@ export default class Home extends React.Component {
         this.setState({val:value});
     }
 
+    selectChange(name, value) {
+        this.setState({val1:value});
+        console.log(name,value);
+    }
     render() {
         return (
             <Container fluid={this.state.fluid}>
@@ -285,10 +290,24 @@ export default class Home extends React.Component {
                                 <Radio name="radio" value={ this.state.val } change={(name, value) => {
                                     return this.radioChange(name, value)
                                 }} config={{
-                                    options: [{value: 0, label: '上网'}, {value: 1, label: '聊天'},{value:2,label:'打游戏'},{value:3,label:'谈恋爱'}]
+                                    options: [{value: 0, label: 'First Blood'}, {value: 1, label: 'Double Kill'},{value:2,label:'Triple Kill'},{value:3,label:'Quadra Kill'},{value:4,label:'Penta Kill'}]
                                 }}/>
                             </Section>
                         </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                            <Panel title="Select">
+                                <Section title="Select">
+                                    <Select name="select" value={ this.state.val1 } change={(name, value) => {
+                                        return this.selectChange(name, value)
+                                    }} config={{
+                                        placeholder:'全部',
+                                        options: [{value: 0, label: '上网'}, {value: 1, label: '聊天'},{value:2,label:'打游戏'},{value:3,label:'谈恋爱'}]
+                                    }}/>
+                                </Section>
+                            </Panel>
                     </Col>
                 </Row>
             </Container>
