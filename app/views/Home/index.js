@@ -249,15 +249,16 @@ export default class Home extends React.Component {
                                 selectAllButton
                                 url="user/list"
                                 config={{
-                                    pageLength: 10
+                                    pageLength: 10,
                                 }}
                                 buttons={[
                                     {label: '按钮1',callback: (res)=>{ console.log(res) } },
-                                    {label: '按钮2',callback: (res)=>{ console.log(res) } }
+                                    {label: '按钮2',callback: (res)=>{ console.log(res) } },
+                                    {label: '按钮3',className:'select-none-hide',callback: (res)=>{ console.log(res) } },
                                 ]}
                                 columns={[
-                                    { label: 'id',value:'id' },
-                                    { label: '姓名',value:'name',render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
+                                    { label: 'id',value:'id',sort:true },
+                                    { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
                                     { label: '昵称',value:'nickName' },
                                     { label: '手机号',value:'tel' },
                                 ]}
