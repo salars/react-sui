@@ -10,11 +10,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _helpers = require('../helpers');
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _helpers = require('../helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,36 +24,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SuiThemeProvider = function (_Component) {
-    _inherits(SuiThemeProvider, _Component);
+var Col = function (_Component) {
+    _inherits(Col, _Component);
 
-    function SuiThemeProvider() {
-        _classCallCheck(this, SuiThemeProvider);
+    function Col() {
+        _classCallCheck(this, Col);
 
-        return _possibleConstructorReturn(this, (SuiThemeProvider.__proto__ || Object.getPrototypeOf(SuiThemeProvider)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Col.__proto__ || Object.getPrototypeOf(Col)).apply(this, arguments));
     }
 
-    _createClass(SuiThemeProvider, [{
+    _createClass(Col, [{
+        key: 'getClassName',
+        value: function getClassName() {
+            var props = this.props;
+            return ['lg', 'md', 'sm', 'xl'].map(function (item) {
+                if (props[item]) {
+                    return 'col-' + item + '-' + props[item];
+                } else {
+                    return "";
+                }
+            }).join(" ");
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var t = this.props.t;
-
+            var className = this.getClassName();
             return _react2.default.createElement(
                 'div',
-                { style: {
-                        fontSize: t.FONT_SIZE_BASE,
-                        backgroundColor: t.BODY_BG,
-                        minHeight: '100%'
-                    } },
+                { className: className },
                 this.props.children
             );
         }
     }]);
 
-    return SuiThemeProvider;
+    return Col;
 }(_react.Component);
 
-SuiThemeProvider.props = {
-    theme: _propTypes2.default.string
+Col.props = {
+    lg: _propTypes2.default.string,
+    md: _propTypes2.default.string,
+    sm: _propTypes2.default.string,
+    xs: _propTypes2.default.string
 };
-exports.default = (0, _helpers.composeTheme)(SuiThemeProvider);
+exports.default = (0, _helpers.composeTheme)(Col);

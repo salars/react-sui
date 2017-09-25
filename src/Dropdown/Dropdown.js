@@ -26,24 +26,35 @@ class Dropdown extends Component {
     state = {
         open: false
     };
-    openToggle(){
-        this.setState(state=>{
-            return {open: !state.open}
-        });
-    }
     itemClick(item){
         this.setState(state=>{
-            return {open: !state.open}
+            return {open: false}
         },()=>{
             item.fnClick && item.fnClick();
         });
+    }
+
+    globalEventHandler(e){
+        if(e.path.includes(this.refs.dropDownHandler)){
+            this.setState(state=>{
+                return {open: !state.open}
+            });
+        }else{
+            this.setState({open:false})
+        }
+    }
+    componentDidMount(){
+        document.body.addEventListener('click',this.globalEventHandler);
+    }
+    componentWillUnmount(){
+       document.body.removeEventListener('click',this.globalEventHandler)
     }
     render(){
         const { type,t,size,label,options,split,caret,right,up, } = this.props;
         const { open } = this.state;
         return (
             <div className={(up ? "dropup " : "dropdown ") + (open ? 'open':'') } style={ {display: 'inline-block'} }>
-                <div onClick={ this.openToggle }>
+                <div ref="dropDownHandler">
                 {
                     split ?
                         <ButtonGroup>

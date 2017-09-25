@@ -10,11 +10,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _helpers = require('../helpers');
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _helpers = require('../helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,36 +24,55 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SuiThemeProvider = function (_Component) {
-    _inherits(SuiThemeProvider, _Component);
+var BreadCrumb = function (_Component) {
+    _inherits(BreadCrumb, _Component);
 
-    function SuiThemeProvider() {
-        _classCallCheck(this, SuiThemeProvider);
+    function BreadCrumb() {
+        _classCallCheck(this, BreadCrumb);
 
-        return _possibleConstructorReturn(this, (SuiThemeProvider.__proto__ || Object.getPrototypeOf(SuiThemeProvider)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (BreadCrumb.__proto__ || Object.getPrototypeOf(BreadCrumb)).apply(this, arguments));
     }
 
-    _createClass(SuiThemeProvider, [{
+    _createClass(BreadCrumb, [{
         key: 'render',
         value: function render() {
-            var t = this.props.t;
+            var _props = this.props,
+                t = _props.t,
+                pathInfo = _props.pathInfo;
 
-            return _react2.default.createElement(
-                'div',
-                { style: {
-                        fontSize: t.FONT_SIZE_BASE,
-                        backgroundColor: t.BODY_BG,
-                        minHeight: '100%'
+            return pathInfo instanceof Array && pathInfo.length > 0 ? _react2.default.createElement(
+                'ul',
+                { className: 'breadcrumb', style: {
+                        backgroundColor: 'white'
                     } },
-                this.props.children
-            );
+                pathInfo.map(function (item, i) {
+                    return _react2.default.createElement(
+                        'li',
+                        { className: 'breadcrumb-item ' + (item.url ? "" : ' active'), key: i, onClick: function onClick() {
+                                item.url;
+                            } },
+                        item.url ? _react2.default.createElement(
+                            'span',
+                            { style: {
+                                    color: t.BREAD_COLOR,
+                                    cursor: 'pointer'
+                                } },
+                            item.content
+                        ) : _react2.default.createElement(
+                            'span',
+                            null,
+                            item.content
+                        )
+                    );
+                })
+            ) : null;
         }
     }]);
 
-    return SuiThemeProvider;
+    return BreadCrumb;
 }(_react.Component);
 
-SuiThemeProvider.props = {
-    theme: _propTypes2.default.string
+BreadCrumb.props = {
+    pathInfo: _propTypes2.default.array
 };
-exports.default = (0, _helpers.composeTheme)(SuiThemeProvider);
+exports.default = (0, _helpers.composeTheme)(BreadCrumb);

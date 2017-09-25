@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -14,6 +13,8 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _helpers = require('../helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,14 +37,19 @@ var Button = function (_Component) {
         key: 'render',
         value: function render() {
             var _props = this.props,
+                size = _props.size,
                 type = _props.type,
                 label = _props.label,
-                onClick = _props.onClick;
+                onClick = _props.onClick,
+                className = _props.className,
+                t = _props.t;
 
             return _react2.default.createElement(
                 'button',
-                { className: "btn btn-" + type, onClick: onClick },
-                label
+                { className: 'btn btn-' + size + ' btn-' + type, onClick: onClick
+                },
+                label,
+                this.props.children
             );
         }
     }]);
@@ -57,6 +63,7 @@ Button.props = {
     onClick: _propTypes2.default.func
 };
 Button.defaultProps = {
-    type: 'default'
+    type: 'default',
+    size: 'md'
 };
-exports.default = Button;
+exports.default = (0, _helpers.composeTheme)(Button);
