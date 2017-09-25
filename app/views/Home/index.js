@@ -42,6 +42,7 @@ export default class Home extends React.Component {
     }
     render() {
         return (
+            <div>
             <Container fluid={this.state.fluid}>
                 <Row gutter>
                     <Col md="12">
@@ -312,6 +313,7 @@ export default class Home extends React.Component {
                     </Col>
                 </Row>
             </Container>
+            </div>
         )
     }
 }

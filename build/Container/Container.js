@@ -43,11 +43,7 @@ var Container = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: className,
-                    style: {
-                        width: fluid ? t.CONTAINER_FULL_WIDTH : t.CONTAINER_FIXED_WIDTH,
-                        margin: "0 auto"
-                    } },
+                { className: 'container' + (fluid ? "-fluid" : "") + ' ' + (className || "") },
                 this.props.children
             );
         }

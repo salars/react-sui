@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
+var _ClearFix = require('../ClearFix');
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _ClearFix2 = _interopRequireDefault(_ClearFix);
 
 var _helpers = require('../helpers');
 
@@ -24,36 +24,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SuiThemeProvider = function (_Component) {
-    _inherits(SuiThemeProvider, _Component);
+var List = function (_Component) {
+    _inherits(List, _Component);
 
-    function SuiThemeProvider() {
-        _classCallCheck(this, SuiThemeProvider);
+    function List() {
+        _classCallCheck(this, List);
 
-        return _possibleConstructorReturn(this, (SuiThemeProvider.__proto__ || Object.getPrototypeOf(SuiThemeProvider)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
     }
 
-    _createClass(SuiThemeProvider, [{
+    _createClass(List, [{
         key: 'render',
         value: function render() {
-            var t = this.props.t;
-
             return _react2.default.createElement(
-                'div',
-                { style: {
-                        fontSize: t.FONT_SIZE_BASE,
-                        backgroundColor: t.BODY_BG,
-                        minHeight: '100%'
-                    } },
+                _ClearFix2.default,
+                null,
                 this.props.children
             );
         }
     }]);
 
-    return SuiThemeProvider;
+    return List;
 }(_react.Component);
 
-SuiThemeProvider.props = {
-    theme: _propTypes2.default.string
-};
-exports.default = (0, _helpers.composeTheme)(SuiThemeProvider);
+exports.default = (0, _helpers.composeTheme)(List);

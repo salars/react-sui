@@ -10,11 +10,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _helpers = require('../helpers');
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _helpers = require('../helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,36 +24,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SuiThemeProvider = function (_Component) {
-    _inherits(SuiThemeProvider, _Component);
+var Panel = function (_Component) {
+    _inherits(Panel, _Component);
 
-    function SuiThemeProvider() {
-        _classCallCheck(this, SuiThemeProvider);
+    function Panel() {
+        _classCallCheck(this, Panel);
 
-        return _possibleConstructorReturn(this, (SuiThemeProvider.__proto__ || Object.getPrototypeOf(SuiThemeProvider)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Panel.__proto__ || Object.getPrototypeOf(Panel)).apply(this, arguments));
     }
 
-    _createClass(SuiThemeProvider, [{
+    _createClass(Panel, [{
         key: 'render',
         value: function render() {
-            var t = this.props.t;
+            var _props = this.props,
+                t = _props.t,
+                title = _props.title,
+                type = _props.type;
 
             return _react2.default.createElement(
                 'div',
-                { style: {
-                        fontSize: t.FONT_SIZE_BASE,
-                        backgroundColor: t.BODY_BG,
-                        minHeight: '100%'
-                    } },
-                this.props.children
+                { className: 'panel panel-' + type },
+                title ? _react2.default.createElement(
+                    'div',
+                    { className: 'panel-heading' },
+                    title
+                ) : null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'panel-body' },
+                    this.props.children
+                )
             );
         }
     }]);
 
-    return SuiThemeProvider;
+    return Panel;
 }(_react.Component);
 
-SuiThemeProvider.props = {
-    theme: _propTypes2.default.string
+Panel.props = {
+    type: _propTypes2.default.string
 };
-exports.default = (0, _helpers.composeTheme)(SuiThemeProvider);
+Panel.defaultProps = {
+    type: "default"
+};
+exports.default = (0, _helpers.composeTheme)(Panel);

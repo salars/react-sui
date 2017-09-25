@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.rem = exports.composeTheme = exports.compose = undefined;
+exports.getColorByType = exports.rem = exports.composeTheme = exports.compose = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -65,4 +65,8 @@ var composeTheme = exports.composeTheme = compose({ t: _theme2.default });
 
 var rem = exports.rem = function rem(size) {
     return size + "rem";
+};
+
+var getColorByType = exports.getColorByType = function getColorByType(type, t) {
+    return t[type.toUpperCase() + "_COLOR"];
 };
