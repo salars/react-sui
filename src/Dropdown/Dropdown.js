@@ -14,6 +14,7 @@ class Dropdown extends Component {
         caret: PropTypes.bool,
         right: PropTypes.bool,
         up: PropTypes.bool,
+        toggle: PropTypes.bool,
     };
     static defaultProps = {
         type: 'default',
@@ -22,16 +23,20 @@ class Dropdown extends Component {
         caret: true,
         right: false,
         up: false,
+        toggle: false,
+        toggleStatus: false,
     };
     state = {
         open: false
     };
     itemClick(item){
-        this.setState(state=>{
-            return {open: false}
-        },()=>{
-            item.fnClick && item.fnClick();
-        });
+        if(this.props.toggle){
+            item.toggle = !item.toggle;
+        }
+        this.setState({});
+        if(!item.disabled){
+            item.fnClick && item.fnClick(item.label,item.value,item.toggle);
+        }
     }
 
     globalEventHandler(e){
@@ -40,7 +45,17 @@ class Dropdown extends Component {
                 return {open: !state.open}
             });
         }else{
-            this.setState({open:false})
+            let flag = false;
+            for(let i=0;i<e.path.length;i++){
+                if(e.path[i].nodeName=='LI' && e.path[i].className.indexOf('dropdown-li')!=-1){
+                    flag = true;
+                }
+            }
+            if(this.props.toggle && flag){
+
+            }else{
+                this.setState({open:false})
+            }
         }
     }
     componentDidMount(){
@@ -50,7 +65,7 @@ class Dropdown extends Component {
        document.body.removeEventListener('click',this.globalEventHandler)
     }
     render(){
-        const { type,t,size,label,options,split,caret,right,up, } = this.props;
+        const { type,t,size,label,options,split,caret,right,up,style } = this.props;
         const { open } = this.state;
         return (
             <div className={(up ? "dropup " : "dropdown ") + (open ? 'open':'') } style={ {display: 'inline-block'} }>
@@ -81,7 +96,9 @@ class Dropdown extends Component {
                 <ul className={"dropdown-menu " + (right ? "dropdown-menu-right" :"")}>
                 {
                     options.map((item,i)=>{
-                        return <li key={ i } className={item.disabled ? "disabled":""} style={ {cursor: 'pointer'} } onClick={ _=>this.itemClick(item) }><a>{item.label}</a></li>
+                        return <li key={ i } ref="li" className={"dropdown-li "+(item.disabled ? "disabled":"")} style={ {cursor: 'pointer'} } onClick={ _=>this.itemClick(item) }>
+                            <a style={item.toggle? {color:'#aaa'}:{}}>{item.label}</a>
+                        </li>
                     })
                 }
                 </ul>
