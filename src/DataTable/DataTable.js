@@ -6,6 +6,7 @@ import CheckBox from 'react-sui/CheckBox';
 import defaultConfig from './config';
 import { autobind } from 'core-decorators';
 import './style.less';
+import NO_RESULT_IMG from './images/no_result.png';
 @autobind
 class DataTable extends Component {
     static props = {
@@ -76,13 +77,13 @@ class DataTable extends Component {
 
             //模拟数据
             let data=[];
-            const total = 104;
-            for(let i=0;i<pageSize;i++){
+            const total = 0;
+            /*for(let i=0;i<pageSize;i++){
                 const sum = (pageNum-1)*pageSize+i+1;
                 if(sum<=total){
                     data.push({ id: sum, name:'test'+sum, nickName: 'nick'+sum, tel: '12341341234' });
                 }
-            }
+            }*/
             const { checkAll } = this.state;
 
             let arr = [];
@@ -164,7 +165,7 @@ class DataTable extends Component {
         }
     }
     render(){
-        const { t,columns,striped,bordered,hover,select,buttons,selectAllButton } = this.props;
+        const { t,striped,bordered,hover,select,buttons,selectAllButton } = this.props;
         const { data,current,total,config,selectArr,checkAll,newColumns } = this.state;
         const info = config.language.info
             .replace('_START_',(current-1)*config.pageLength)
@@ -204,7 +205,7 @@ class DataTable extends Component {
                             {
                                 select ?
                                     <th style={{width:t.TABLE_SELECT_WIDTH}}>
-                                        <CheckBox checked={ selectArr.length==data.length || checkAll } fnClick={ (name,value)=>this.selectAll(value) }/>
+                                        <CheckBox checked={ (selectArr.length==data.length && data.length>0) || checkAll } fnClick={ (name,value)=>this.selectAll(value) }/>
                                     </th> : null
                             }
                         {
@@ -219,25 +220,36 @@ class DataTable extends Component {
                         }
                         </tr>
                     </thead>
-                    <tbody>
                     {
-                        data.map((item,i)=>{
-                            return <tr key={i} onClick={ ()=>{ this.selectTrChange(item.id,!(selectArr.includes(item.id) || checkAll)) } }>
-                                {
-                                    select ?
-                                        <td>
-                                            <CheckBox name={item.id} checked={ selectArr.includes(item.id) || checkAll } />
-                                        </td> : null
-                                }
-                                {
-                                    columns.map((val,idx)=>{
-                                        return <td key={idx}>{ val.render ? val.render(item[val.value], item) : item[val.value] }</td>
-                                    })
-                                }
-                            </tr>
-                        })
+                        data.length > 0 ?
+                            <tbody>
+                            {
+                                data.map((item,i)=>{
+                                    return <tr key={i} onClick={ ()=>{ this.selectTrChange(item.id,!(selectArr.includes(item.id) || checkAll)) } }>
+                                        {
+                                            select ?
+                                                <td>
+                                                    <CheckBox name={item.id} checked={ selectArr.includes(item.id) || checkAll } />
+                                                </td> : null
+                                        }
+                                        {
+                                            newColumns.map((val,idx)=>{
+                                                return <td key={idx}>{ val.render ? val.render(item[val.value], item) : item[val.value] }</td>
+                                            })
+                                        }
+                                    </tr>
+                                })
+                            }
+                            </tbody>
+                            :
+                            <tbody>
+                                <tr>
+                                    <td colSpan={ newColumns.length + (select ? 1 : 0) } style={{padding:'5rem 0',textAlign:'center',backgroundColor:t.WHITE}}>
+                                        <img src={ NO_RESULT_IMG }/>
+                                    </td>
+                                </tr>
+                            </tbody>
                     }
-                    </tbody>
                 </table>
                 <div>
                 {
