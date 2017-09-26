@@ -14,6 +14,7 @@ import Badges from 'react-sui/Badges';
 import CheckBox from 'react-sui/CheckBox';
 import Radio from 'react-sui/Radio';
 import Select from 'react-sui/Select';
+import Input from 'react-sui/Input';
 
 const ColorBlock = (props) => {
     return (
@@ -30,6 +31,9 @@ export default class Home extends React.Component {
         fluid: false,
         checked: false,
         current: 1,
+        val:'',
+        val1:'',
+        val2:''
     };
 
     radioChange(name, value) {
@@ -38,6 +42,10 @@ export default class Home extends React.Component {
 
     selectChange(name, value) {
         this.setState({val1:value});
+        console.log(name,value);
+    }
+    inputChange(name,value){
+        this.setState({val2:value});
         console.log(name,value);
     }
     render() {
@@ -310,6 +318,17 @@ export default class Home extends React.Component {
                                     }}/>
                                 </Section>
                             </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="Input">
+                            <Section title="Input">
+                                <Input name="ok" value={ this.state.val2 } change={(name, value) => {
+                                    this.inputChange(name, value)
+                                }} placeholder="请选择" maxlength='8'/>
+                            </Section>
+                        </Panel>
                     </Col>
                 </Row>
             </Container>
