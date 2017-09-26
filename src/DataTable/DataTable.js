@@ -4,10 +4,10 @@ import {composeTheme, getColorByType} from '../helpers';
 import Pagination from 'react-sui/Pagination';
 import CheckBox from 'react-sui/CheckBox';
 import Select from 'react-sui/Select';
+import Input from 'react-sui/Input';
 import Dropdown from 'react-sui/Dropdown';
 import defaultConfig from './config';
 import {autobind} from 'core-decorators';
-import './style.less';
 import NO_RESULT_IMG from './images/no_result.png';
 @autobind
 class DataTable extends Component {
@@ -90,7 +90,7 @@ class DataTable extends Component {
             for (let i = 0; i < pageSize; i++) {
                 const sum = (pageNum - 1) * pageSize + i + 1;
                 if (sum <= total) {
-                    data.push({id: sum, name: 'test' + sum, nickName: 'nick' + sum, tel: '12341341234'});
+                    data.push({id: sum, name: 'test' + sum, nickName: 'nickasdfqweradsfqewradsfasdfqwerefasdfqweasdfdfg' + sum, tel: '12341341234'});
                 }
             }
             const {checkAll} = this.state;
@@ -195,12 +195,16 @@ class DataTable extends Component {
         this.setState({});
     }
 
-    tdEdit(e,data){
+    showDetailInfo(e,val){
         e.stopPropagation();
-        data.editStatus = true;
-        this.setState({});
+        let container = document.getElementsByClassName('simple-info-container')[0];
+        const { offsetLeft, offsetTop } = e.target;
+        container.style.display = 'block';
+        container.innerHTML = val;
+        container.style.left = offsetLeft + 'px';
+        container.style.top = offsetTop + e.target.parentNode.parentNode.parentNode.offsetTop - container.offsetHeight + 5 + 'px';
+        return false;
     }
-
     render() {
         const {t, columns, striped, bordered, hover, select, buttons, selectAllButton} = this.props;
         const {data, current, total, config, selectArr, checkAll, selectColumnOptions} = this.state;
@@ -213,7 +217,6 @@ class DataTable extends Component {
         for (let i = 0; i < config.lengthMenu.length; i++) {
             pageLengthConfig.push({label: config.lengthMenu[i], value: config.lengthMenu[i]});
         }
-
         return (
             <div className="data-table">
                 <div style={{marginBottom: t.MARGIN_MEDIUM}} className="buttons">
@@ -225,7 +228,7 @@ class DataTable extends Component {
                             : null
                     }
                     {
-                        buttons.map((item, i) => {
+                        buttons && buttons.map((item, i) => {
                             return <span key={i}
                                          style={{
                                              display: ( item.className != 'select-none-hide' || selectArr.length != 0 ) ? 'inline-block' : 'none'
@@ -242,6 +245,7 @@ class DataTable extends Component {
                             : null
                     }
                 </div>
+                <div style={config.scrollX ? {overflowX:'auto'} : {} }>
                 <table
                     className={`table ${striped ? 'table-striped' : ''} ${bordered ? 'table-bordered' : ''} ${hover ? 'table-hover' : ''}`}>
                     <thead>
@@ -256,10 +260,15 @@ class DataTable extends Component {
                         }
                         {
                             columns.map((item, i) => {
+                                let styleObj = {};
+                                if(item.simpleInfo){
+                                    styleObj = {whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:'10rem',color:t.PRIMARY_COLOR,cursor:'pointer'}
+                                }
+                                styleObj = item.sort ? {...styleObj,paddingRight: '25px', position: 'relative'} : styleObj;
                                 if (!item.hide) {
                                     return <th key={i}
                                                onClick={ () => this.thClick(item) }
-                                               style={{paddingRight: '25px', position: 'relative'}}
+                                               style={ styleObj }
                                                className={ (item.sort ? "sorting " : "") + (item.asc ? "sorting_asc " : "") + (item.desc ? "sorting_desc" : "")}>
                                         { item.label }
                                     </th>
@@ -286,27 +295,18 @@ class DataTable extends Component {
                                         {
                                             columns.map((val, idx) => {
                                                 if (!val.hide) {
-                                                    return <td key={idx}>
-                                                        { (!val.edit || !item.editStatus) ? <span>{ val.render ? val.render(item[val.value], item) : item[val.value] }</span> : null}
-                                                        {
-                                                            (val.edit && !item.editStatus) ?
-                                                                <span className="edit-icon"
-                                                                      style={{float: 'right', cursor: 'pointer'}}
-                                                                      onClick={ (event)=>this.tdEdit(event,item) }
-                                                                      >
-                                                                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                </span>
-                                                                : null
-                                                        }
-                                                        { (val.edit && item.editStatus) ? <input type="text" /> : null}
-                                                        { (val.edit && item.editStatus) ?
-                                                            <span style={{float: 'right', cursor: 'pointer'}}
-                                                                  onClick={ () => {
-                                                                      val.editCallback(item[val.value]);
-                                                                      item.editStatus = false;
-                                                                  } }>
-                                                                <i className="fa fa-check" aria-hidden="true"></i>
-                                                            </span> : null}
+                                                    return <td key={idx}
+                                                               className={ val.simpleInfo ? 'simple-info-td':'' }
+                                                               style={ val.simpleInfo ? {whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:'10rem',color:t.PRIMARY_COLOR,cursor:'pointer'} : {} }
+                                                               onClick={
+                                                                   (event)=> {
+                                                                       if( val.simpleInfo){
+                                                                           this.showDetailInfo(event,val.render ? val.render(item[val.value], item) : item[val.value])
+                                                                       }
+                                                                   }
+                                                               }
+                                                    >
+                                                        { val.render ? val.render(item[val.value], item) : item[val.value] }
                                                     </td>
                                                 }
                                             })
@@ -326,6 +326,7 @@ class DataTable extends Component {
                             </tbody>
                     }
                 </table>
+                </div>
                 <div>
                     {
                         config.info ?

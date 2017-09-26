@@ -8,7 +8,7 @@ import Panel from 'react-sui/Panel';
 import Row from 'react-sui/Row';
 import Col from 'react-sui/Col';
 import BreadCrumb from 'react-sui/BreadCrumb';
-import DataTable from 'react-sui/DataTable';
+import {DataTable,DataTableContainer} from 'react-sui/DataTable';
 import Pagination from 'react-sui/Pagination';
 import Badges from 'react-sui/Badges';
 import CheckBox from 'react-sui/CheckBox';
@@ -253,25 +253,28 @@ export default class Home extends React.Component {
                 <Row>
                     <Col md="12">
                         <Panel title="DataTable">
-                            <DataTable
-                                select
-                                selectAllButton
-                                url="user/list"
-                                config={{
-                                    pageLength: 10,
-                                }}
-                                buttons={[
-                                    {label: '按钮1',callback: (res)=>{ console.log(res) } },
-                                    {label: '按钮2',callback: (res)=>{ console.log(res) } },
-                                    {label: '按钮3',className:'select-none-hide',callback: (res)=>{ console.log(res) } },
-                                ]}
-                                columns={[
-                                    { label: 'id',value:'id',sort:true },
-                                    { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
-                                    { label: '昵称',value:'nickName',edit:true,editCallback:(val)=>console.log(val) },
-                                    { label: '手机号',value:'tel' },
-                                ]}
-                            />
+                            <DataTableContainer>
+                                <div>filters...</div>
+                                <DataTable
+                                    select
+                                    selectAllButton
+                                    url="user/list"
+                                    config={{
+                                        pageLength: 10,
+                                    }}
+                                    buttons={[
+                                        {label: '按钮1',callback: (res)=>{ console.log(res) } },
+                                        {label: '按钮2',callback: (res)=>{ console.log(res) } },
+                                        {label: '按钮3',className:'select-none-hide',callback: (res)=>{ console.log(res) } },
+                                    ]}
+                                    columns={[
+                                        { label: 'id',value:'id',sort:true },
+                                        { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
+                                        { label: '昵称',value:'nickName',simpleInfo:true },
+                                        { label: '手机号',value:'tel' },
+                                    ]}
+                                />
+                            </DataTableContainer>
                         </Panel>
                     </Col>
                 </Row>
