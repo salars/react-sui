@@ -260,7 +260,7 @@ export default class Home extends React.Component {
                                 columns={[
                                     { label: 'id',value:'id',sort:true },
                                     { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
-                                    { label: '昵称',value:'nickName' },
+                                    { label: '昵称',value:'nickName',edit:true,editCallback:(val)=>console.log(val) },
                                     { label: '手机号',value:'tel' },
                                 ]}
                             />

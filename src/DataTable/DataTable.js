@@ -48,7 +48,7 @@ class DataTable extends Component {
             this.getData(1, this.state.config.pageLength);
         });
 
-        if(mergeConfig.selectColumn){
+        if (mergeConfig.selectColumn) {
             const {columns} = this.props;
             let selColOptArr = [];
             for (let i = 0; i < columns.length; i++) {
@@ -195,6 +195,12 @@ class DataTable extends Component {
         this.setState({});
     }
 
+    tdEdit(e,data){
+        e.stopPropagation();
+        data.editStatus = true;
+        this.setState({});
+    }
+
     render() {
         const {t, columns, striped, bordered, hover, select, buttons, selectAllButton} = this.props;
         const {data, current, total, config, selectArr, checkAll, selectColumnOptions} = this.state;
@@ -279,8 +285,29 @@ class DataTable extends Component {
                                         }
                                         {
                                             columns.map((val, idx) => {
-                                                if(!val.hide){
-                                                    return <td key={idx}>{ val.render ? val.render(item[val.value], item) : item[val.value] }</td>
+                                                if (!val.hide) {
+                                                    return <td key={idx}>
+                                                        { (!val.edit || !item.editStatus) ? <span>{ val.render ? val.render(item[val.value], item) : item[val.value] }</span> : null}
+                                                        {
+                                                            (val.edit && !item.editStatus) ?
+                                                                <span className="edit-icon"
+                                                                      style={{float: 'right', cursor: 'pointer'}}
+                                                                      onClick={ (event)=>this.tdEdit(event,item) }
+                                                                      >
+                                                                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                                </span>
+                                                                : null
+                                                        }
+                                                        { (val.edit && item.editStatus) ? <input type="text" /> : null}
+                                                        { (val.edit && item.editStatus) ?
+                                                            <span style={{float: 'right', cursor: 'pointer'}}
+                                                                  onClick={ () => {
+                                                                      val.editCallback(item[val.value]);
+                                                                      item.editStatus = false;
+                                                                  } }>
+                                                                <i className="fa fa-check" aria-hidden="true"></i>
+                                                            </span> : null}
+                                                    </td>
                                                 }
                                             })
                                         }
