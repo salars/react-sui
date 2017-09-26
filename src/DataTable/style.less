@@ -1,8 +1,21 @@
 .data-table {
   .buttons {
-    > span:not(.table-select-all):hover {
+    > span,.dropdown .btn{
+      display: inline-block;
+      cursor: pointer;
+      margin-right: .3rem;
+      padding: 0 .5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      border-radius: .1rem;
+    }
+    > span:not(.table-select-all):hover,.dropdown .btn:hover {
       background-color: #337ab7;
       color: #fff;
+    }
+    .dropdown .btn{
+      border:none;
+      vertical-align: inherit;
     }
   }
   thead {
