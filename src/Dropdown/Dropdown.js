@@ -32,6 +32,7 @@ class Dropdown extends Component {
     itemClick(item){
         if(this.props.toggle){
             item.toggle = !item.toggle;
+            this.setState({open: true});
         }
         if(!item.disabled){
             item.fnClick && item.fnClick(item.label,item.value,item.toggle);

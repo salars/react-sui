@@ -90,7 +90,7 @@ class DataTable extends Component {
             for (let i = 0; i < pageSize; i++) {
                 const sum = (pageNum - 1) * pageSize + i + 1;
                 if (sum <= total) {
-                    data.push({id: sum, name: 'test' + sum, nickName: 'nickasdfqweradsfqewradsfasdfqwerefasdfqweasdfdfg' + sum, tel: '12341341234'});
+                    data.push({id: sum, name: 'test' + sum, nickName: 'nick' + sum, tel: '12341341234'});
                 }
             }
             const {checkAll} = this.state;
@@ -262,7 +262,7 @@ class DataTable extends Component {
                             columns.map((item, i) => {
                                 let styleObj = {};
                                 if(item.simpleInfo){
-                                    styleObj = {whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:'10rem',color:t.PRIMARY_COLOR,cursor:'pointer'}
+                                    styleObj = {whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:'10rem'}
                                 }
                                 styleObj = item.sort ? {...styleObj,paddingRight: '25px', position: 'relative'} : styleObj;
                                 if (!item.hide) {
