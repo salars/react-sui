@@ -71,7 +71,7 @@ class FileUpload extends Component {
 
                 </div>
                 {
-                    !!requirePath ? (
+                    requirePath ? (
                         <div className="file-left-con file-path">
                             <div >
                                 {this.state.path}
