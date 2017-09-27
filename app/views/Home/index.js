@@ -14,6 +14,8 @@ import Badges from 'react-sui/Badges';
 import CheckBox from 'react-sui/CheckBox';
 import Radio from 'react-sui/Radio';
 import Select from 'react-sui/Select';
+import FileUpload from 'react-sui/FileUpload';
+
 
 const ColorBlock = (props) => {
     return (
@@ -40,6 +42,16 @@ export default class Home extends React.Component {
         this.setState({val1:value});
         console.log(name,value);
     }
+
+    setMyState(key, value) {
+        console.log("setMyState");
+        console.log(value);
+    }
+
+    componentWillUpdate(nextProps,nextState) {
+        console.log("new state get: "+nextState.file);
+    }
+
     render() {
         return (
             <div>
@@ -310,6 +322,17 @@ export default class Home extends React.Component {
                                     }}/>
                                 </Section>
                             </Panel>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        <Panel title="FileUpload">
+                            <Section title="FileUpload">
+                                <FileUpload text="" fileType="file" requirePath={true} change={(name, value) => {
+                                    return this.setMyState(name, value)
+                                }} />
+                            </Section>
+                        </Panel>
                     </Col>
                 </Row>
             </Container>
