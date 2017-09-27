@@ -1,55 +1,68 @@
-.data-table {
-  .buttons {
-    > span,.dropdown .btn{
-      display: inline-block;
-      cursor: pointer;
-      margin-right: .3rem;
-      padding: 0 .5rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
-      border-radius: .1rem;
+.data-table-container{
+  .data-table {
+    .buttons {
+      > span,.dropdown .btn{
+        display: inline-block;
+        cursor: pointer;
+        margin-right: .3rem;
+        padding: 0 .5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        border-radius: .1rem;
+      }
+      > span:not(.table-select-all):hover,.dropdown .btn:hover {
+        background-color: #337ab7;
+        color: #fff;
+      }
+      .dropdown .btn{
+        border:none;
+        vertical-align: inherit;
+      }
     }
-    > span:not(.table-select-all):hover,.dropdown .btn:hover {
-      background-color: #337ab7;
-      color: #fff;
+    thead {
+      .sorting:after {
+        content: "";
+        background: url(./images/sort_default.png) no-repeat;
+        background-size: cover;
+      }
+      .sorting_asc:after {
+        content: "";
+        background: url(./images/sort_asc.png) no-repeat;
+        background-size: cover;
+      }
+      .sorting_desc:after {
+        content: "";
+        background: url(./images/sort_desc.png) no-repeat;
+        background-size: cover;
+      }
+      .sorting:after, .sorting_asc:after, .sorting_desc:after{
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        display: block;
+        width: 13px;
+        height: 13px;
+        opacity: 1;
+      }
     }
-    .dropdown .btn{
-      border:none;
-      vertical-align: inherit;
+    td .edit-icon{
+      display: none;
+    }
+    td:hover{
+      .edit-icon{
+        display: inline-block;
+      }
     }
   }
-  thead {
-    .sorting:after {
-      content: "";
-      background: url(./images/sort_default.png) no-repeat;
-      background-size: cover;
-    }
-    .sorting_asc:after {
-      content: "";
-      background: url(./images/sort_asc.png) no-repeat;
-      background-size: cover;
-    }
-    .sorting_desc:after {
-      content: "";
-      background: url(./images/sort_desc.png) no-repeat;
-      background-size: cover;
-    }
-    .sorting:after, .sorting_asc:after, .sorting_desc:after{
-      position: absolute;
-      top: 12px;
-      right: 8px;
-      display: block;
-      width: 13px;
-      height: 13px;
-      opacity: 1;
-    }
-  }
-  td .edit-icon{
-    display: none;
-  }
-  td:hover{
-    .edit-icon{
-      display: inline-block;
-    }
+  .simple-info-container:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: .3rem solid #333;
+    bottom: -.6rem;
+    left: 50%;
+    margin-left: -.15rem;
+    border-color: #3384fe transparent transparent;
   }
 }

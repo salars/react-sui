@@ -32,8 +32,8 @@ class Dropdown extends Component {
     itemClick(item){
         if(this.props.toggle){
             item.toggle = !item.toggle;
+            this.setState({open: true});
         }
-        this.setState({});
         if(!item.disabled){
             item.fnClick && item.fnClick(item.label,item.value,item.toggle);
         }
@@ -45,17 +45,7 @@ class Dropdown extends Component {
                 return {open: !state.open}
             });
         }else{
-            let flag = false;
-            for(let i=0;i<e.path.length;i++){
-                if(e.path[i].nodeName=='LI' && e.path[i].className.indexOf('dropdown-li')!=-1){
-                    flag = true;
-                }
-            }
-            if(this.props.toggle && flag){
-
-            }else{
-                this.setState({open:false})
-            }
+            this.setState({open:false})
         }
     }
     componentDidMount(){
