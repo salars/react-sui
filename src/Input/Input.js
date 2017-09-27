@@ -3,8 +3,8 @@ import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import {autobind} from 'core-decorators';
 
-@autobind
 
+@autobind
 class Input extends Component {
     static props = {
         name: PropTypes.string,
@@ -15,13 +15,16 @@ class Input extends Component {
         unit: PropTypes.string,
         type: PropTypes.string,
         formatter: PropTypes.func,
-        parse: PropTypes.func,
         min: PropTypes.number,
     };
 
+    //默认value为空
+    static defaultProps = {
+        value:''
+    };
     onChange(e) {
         const {value} = e.target;
-        const {name, change, parser, maxlength} = this.props;
+        const {name, change, maxlength} = this.props;
          if (maxlength && value.length > maxlength) {
              let valStr = value.slice(0, maxlength);
              this.refs.input.value = valStr;
@@ -31,16 +34,17 @@ class Input extends Component {
          }
     }
 
-    componentWillReceiveProps(nextProps) {
-        const {value} = this.props;
-        if (nextProps.value != this.props.value) {
-            if (value) {
-                this.refs.input.value = value;
-            } else {
-                this.refs.input.value = '';
-            }
-        }
-    }
+    //监听value变化 判断初始值是否为空
+    // componentWillReceiveProps(nextProps) {
+    //     const {value} = this.props;
+    //     if (nextProps.value != this.props.value) {
+    //         if (value) {
+    //             this.refs.input.value = value;
+    //         } else {
+    //             this.refs.input.value = '';
+    //         }
+    //     }
+    // }
 
     render() {
         const {type, value, maxlength, placeholder, min, unit,formatter} = this.props;
@@ -52,7 +56,7 @@ class Input extends Component {
             <div style={{
                 position: 'relative'
             }}>
-                <input type={type || "text"} value={newValue} ref="input" className="form-control"
+                <input type={type || "text"} value={ newValue } ref="input" className="form-control"
                        onBlur={this.onChange} maxLength={maxlength || 999} onChange={ this.onChange }
                        placeholder={placeholder} step="any" min={min}/>
                 <span style={{
