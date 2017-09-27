@@ -4,6 +4,7 @@ export default {
     paging:true,
     selectColumn: true,
     info:true,
+    scrollX: true,
     "paginate": {
         "first": "|<",
         "last": ">|",
