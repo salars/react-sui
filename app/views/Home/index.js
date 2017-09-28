@@ -56,7 +56,7 @@ export default class Home extends React.Component {
 
     areaChange(name, value) {
         this.setState({val3: value});
-        console.log(name,value);
+        console.log(name, value);
     }
 
     setMyState(key, value) {
@@ -141,7 +141,6 @@ export default class Home extends React.Component {
                                         }
                                     } label="Fixed Width Container" type="primary"/>
                                 </ButtonGroup>
-<<<<<<< HEAD
                             </Panel>
                         </Col>
                     </Row>
@@ -323,170 +322,197 @@ export default class Home extends React.Component {
                                     this.setState({current: index});
                                     console.log(index)
                                 }}
-                            <Section title="Button Size">
-                                <p>
-                                    <Button onClick={_ => {
-                                    }}
-                                            label="Large" type="primary"
-                                            size="lg"/>
-                                </p>
-                                <p>
-                                    <Button onClick={_ => {
-                                    }} label="Normal" type="primary"/>
-                                </p>
-                                <p>
-                                    <Button onClick={_ => {
-                                    }} label="Small" type="primary" size="sm"/>
-                                </p>
-                                <p>
-                                    <Button onClick={_ => {
-                                    }} label="Extra Small" type="primary" size="xs"/>
-                                </p>
-                            </Section>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md="12">
-                        <Panel title="Columns">
-                            <Row showGrid>
-                                <Col md="12">
-                                    <ColorBlock content="col-12"/>
-                                </Col>
-                            </Row>
-                            <Row showGrid>
-                                <Col md="8">
-                                    <ColorBlock content="col-8"/>
-                                </Col>
-                                <Col md="4">
-                                    <ColorBlock content="col-4"/>
-                                </Col>
-                            </Row>
-                            <Row showGrid>
-                                <Col md="6">
-                                    <ColorBlock content="col-6"/>
-                                </Col>
-                                <Col md="6">
-                                    <ColorBlock content="col-6"/>
-                                </Col>
-                            </Row>
-                            <Row showGrid>
-                                <Col md="4">
-                                    <ColorBlock content="col-4"/>
-                                </Col>
-                                <Col md="4">
-                                    <ColorBlock content="col-4"/>
-                                </Col>
-                                <Col md="4">
-                                    <ColorBlock content="col-4"/>
-                                </Col>
-                            </Row>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row gutter>
-                    <Col sm="12">
-                        <Panel title="Dropdown">
-                            <Section title="Dropdown size type">
-                                <Dropdown label="Dropdown" size="lg" options={[
-                                    {
-                                        label: "option1", fnClick: () => {
-                                        console.log("1")
-                                    }
-                                    },
-                                    {
-                                        label: "option2", disabled: true, fnClick: () => {
-                                        console.log("2")
-                                    }
-                                    },
-                                    {
-                                        label: "option3", fnClick: () => {
-                                        console.log("3")
-                                    }
-                                    },
-                                ]}/>
-                                <Dropdown label="primary" type="primary" iconName="list" options={[
-                                    {label: "option1",iconName:'bath'},
-                                    {label: "option2",iconName:'address-book-o'},
-                                    {label: "option3",iconName:'id-card-o'},
-                                ]}/>
-                                <Dropdown label="warning" type="warning" size="sm" options={[
-                                    {label: "option1"},
-                                    {label: "option2"},
-                                    {label: "option3"},
-                                ]}/>
-                            </Section>
-                            <Section title="direction split">
-                                <Dropdown label="Dropup" up split options={[
-                                    {label: "option1"},
-                                    {label: "option2"},
-                                    {label: "option3"},
-                                ]}/>
-                                <Dropdown label="Dropdown right" right options={[
-                                    {label: "option1"},
-                                    {label: "option2"},
-                                    {label: "option3"},
-                                ]}/>
-                            </Section>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md="12">
-                        <Panel title="DataTable">
-                            <DataTableContainer>
-                                <div>filters...</div>
-                                <DataTable
-                                    select
-                                    selectAllButton
-                                    url="user/list"
-                                    config={{
-                                        pageLength: 10,
-                                    }}
-                                    buttons={[
-                                        {label: '按钮1', iconName:'edit', callback: (res)=>{ console.log(res) } },
-                                        {label: '按钮2', iconName:'send', callback: (res)=>{ console.log(res) } },
-                                        {label: '按钮3', className:'select-none-hide', callback: (res)=>{ console.log(res) } },
-                                    ]}
-                                    columns={[
-                                        { label: 'id',value:'id',sort:true },
-                                        { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <Button type="primary" label={data}/>} },
-                                        { label: '昵称',value:'nickName',simpleInfo:true },
-                                        { label: '手机号',value:'tel' },
-                                    ]}
                                 />
-                            </DataTableContainer>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md="12">
-                        <Panel title="Pagination">
-                            <Pagination total="103" previousText="上一页" nextText="下一页" goFirstText="首页" goLastText="尾页" current={ this.state.current } change={ (index)=>{this.setState({current:index});console.log(index)}}/>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row gutter>
-                    <Col md="12">
-                        <Panel title="CheckBox">
-                            <Section title="CheckBox">
-                                <CheckBox text="嘿嘿嘿" fnClick={(name, checked) => {
-                                    this.setState({checked})
-                                }} name='1' checked={this.state.checked}/>
-                            </Section>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row gutter>
-                    <Col md="12">
-                        <Panel title="Radio">
-                            <Section title="Radio">
-                                <Radio name="radio" value={ this.state.val } change={(name, value) => {
-                                    return this.radioChange(name, value)
-                                }} config={{
-                                    options: [{value: 0, label: 'First Blood'}, {value: 1, label: 'Double Kill'},{value:2,label:'Triple Kill'},{value:3,label:'Quadra Kill'},{value:4,label:'Penta Kill'}]
->>>>>>> 2a51b86ed6cb512a30690a8358dc89dd5187a97f
+                                <Section title="Button Size">
+                                    <p>
+                                        <Button onClick={_ => {
+                                        }}
+                                                label="Large" type="primary"
+                                                size="lg"/>
+                                    </p>
+                                    <p>
+                                        <Button onClick={_ => {
+                                        }} label="Normal" type="primary"/>
+                                    </p>
+                                    <p>
+                                        <Button onClick={_ => {
+                                        }} label="Small" type="primary" size="sm"/>
+                                    </p>
+                                    <p>
+                                        <Button onClick={_ => {
+                                        }} label="Extra Small" type="primary" size="xs"/>
+                                    </p>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="Columns">
+                                <Row showGrid>
+                                    <Col md="12">
+                                        <ColorBlock content="col-12"/>
+                                    </Col>
+                                </Row>
+                                <Row showGrid>
+                                    <Col md="8">
+                                        <ColorBlock content="col-8"/>
+                                    </Col>
+                                    <Col md="4">
+                                        <ColorBlock content="col-4"/>
+                                    </Col>
+                                </Row>
+                                <Row showGrid>
+                                    <Col md="6">
+                                        <ColorBlock content="col-6"/>
+                                    </Col>
+                                    <Col md="6">
+                                        <ColorBlock content="col-6"/>
+                                    </Col>
+                                </Row>
+                                <Row showGrid>
+                                    <Col md="4">
+                                        <ColorBlock content="col-4"/>
+                                    </Col>
+                                    <Col md="4">
+                                        <ColorBlock content="col-4"/>
+                                    </Col>
+                                    <Col md="4">
+                                        <ColorBlock content="col-4"/>
+                                    </Col>
+                                </Row>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row gutter>
+                        <Col sm="12">
+                            <Panel title="Dropdown">
+                                <Section title="Dropdown size type">
+                                    <Dropdown label="Dropdown" size="lg" options={[
+                                        {
+                                            label: "option1", fnClick: () => {
+                                            console.log("1")
+                                        }
+                                        },
+                                        {
+                                            label: "option2", disabled: true, fnClick: () => {
+                                            console.log("2")
+                                        }
+                                        },
+                                        {
+                                            label: "option3", fnClick: () => {
+                                            console.log("3")
+                                        }
+                                        },
+                                    ]}/>
+                                    <Dropdown label="primary" type="primary" iconName="list" options={[
+                                        {label: "option1", iconName: 'bath'},
+                                        {label: "option2", iconName: 'address-book-o'},
+                                        {label: "option3", iconName: 'id-card-o'},
+                                    ]}/>
+                                    <Dropdown label="warning" type="warning" size="sm" options={[
+                                        {label: "option1"},
+                                        {label: "option2"},
+                                        {label: "option3"},
+                                    ]}/>
+                                </Section>
+                                <Section title="direction split">
+                                    <Dropdown label="Dropup" up split options={[
+                                        {label: "option1"},
+                                        {label: "option2"},
+                                        {label: "option3"},
+                                    ]}/>
+                                    <Dropdown label="Dropdown right" right options={[
+                                        {label: "option1"},
+                                        {label: "option2"},
+                                        {label: "option3"},
+                                    ]}/>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="DataTable">
+                                <DataTableContainer>
+                                    <div>filters...</div>
+                                    <DataTable
+                                        select
+                                        selectAllButton
+                                        url="user/list"
+                                        config={{
+                                            pageLength: 10,
+                                        }}
+                                        buttons={[
+                                            {
+                                                label: '按钮1', iconName: 'edit', callback: (res) => {
+                                                console.log(res)
+                                            }
+                                            },
+                                            {
+                                                label: '按钮2', iconName: 'send', callback: (res) => {
+                                                console.log(res)
+                                            }
+                                            },
+                                            {
+                                                label: '按钮3', className: 'select-none-hide', callback: (res) => {
+                                                console.log(res)
+                                            }
+                                            },
+                                        ]}
+                                        columns={[
+                                            {label: 'id', value: 'id', sort: true},
+                                            {
+                                                label: '姓名', value: 'name', sort: true, render: (data, row) => {
+                                                return <Button type="primary" label={data}/>
+                                            }
+                                            },
+                                            {label: '昵称', value: 'nickName', simpleInfo: true},
+                                            {label: '手机号', value: 'tel'},
+                                        ]}
+                                    />
+                                </DataTableContainer>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="Pagination">
+                                <Pagination total="103" previousText="上一页" nextText="下一页" goFirstText="首页"
+                                            goLastText="尾页" current={this.state.current} change={(index) => {
+                                    this.setState({current: index});
+                                    console.log(index)
                                 }}/>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row gutter>
+                        <Col md="12">
+                            <Panel title="CheckBox">
+                                <Section title="CheckBox">
+                                    <CheckBox text="嘿嘿嘿" fnClick={(name, checked) => {
+                                        this.setState({checked})
+                                    }} name='1' checked={this.state.checked}/>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row gutter>
+                        <Col md="12">
+                            <Panel title="Radio">
+                                <Section title="Radio">
+                                    <Radio name="radio" value={this.state.val} change={(name, value) => {
+                                        return this.radioChange(name, value)
+                                    }} config={{
+                                        options: [{value: 0, label: 'First Blood'}, {
+                                            value: 1,
+                                            label: 'Double Kill'
+                                        }, {value: 2, label: 'Triple Kill'}, {
+                                            value: 3,
+                                            label: 'Quadra Kill'
+                                        }, {value: 4, label: 'Penta Kill'}]
+                                    }}/>
+                                </Section>
                             </Panel>
                         </Col>
                     </Row>
@@ -570,19 +596,20 @@ export default class Home extends React.Component {
                             </Panel>
                         </Col>
                     </Row>
-                <Row>
-                    <Col md="12">
-                        <Panel title="FileUpload">
-                            <Section title="FileUpload">
-                                <FileUpload text="" fileType={"image"} requirePath={false} change={(name, value) => {
-                                    return this.setMyState(name, value)
-                                }} />
-                            </Section>
-                        </Panel>
-                    </Col>
-                </Row>
-            </Container>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="FileUpload">
+                                <Section title="FileUpload">
+                                    <FileUpload text="" fileType={"image"} requirePath={false}
+                                                change={(name, value) => {
+                                                    return this.setMyState(name, value)
+                                                }}/>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
-        )
+    )
     }
-}
+    }
