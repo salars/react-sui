@@ -236,12 +236,15 @@ class DataTable extends Component {
                                          onClick={ () => {
                                              item.callback(checkAll ? {checkAll: true} : selectArr)
                                          } }
-                            >{item.label}</span>
+                            >
+                                { item.iconName ? <i className={"fa fa-"+item.iconName} aria-hidden="true" style={{marginRight:'.3rem'}}></i> : null }
+                                {item.label}
+                            </span>
                         })
                     }
                     {
                         config.selectColumn ?
-                            <Dropdown label="选择列" caret={false} toggle={true} options={ selectColumnOptions }/>
+                            <Dropdown label="选择列" iconName="list" caret={false} toggle={true} options={ selectColumnOptions }/>
                             : null
                     }
                 </div>
