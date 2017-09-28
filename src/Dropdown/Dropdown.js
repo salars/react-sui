@@ -15,6 +15,7 @@ class Dropdown extends Component {
         right: PropTypes.bool,
         up: PropTypes.bool,
         toggle: PropTypes.bool,
+        iconName: PropTypes.string,
     };
     static defaultProps = {
         type: 'default',
@@ -55,7 +56,7 @@ class Dropdown extends Component {
        document.body.removeEventListener('click',this.globalEventHandler);
     }
     render(){
-        const { type,t,size,label,options,split,caret,right,up,style } = this.props;
+        const { type,t,size,label,options,split,caret,right,up,iconName } = this.props;
         const { open } = this.state;
         return (
             <div className={(up ? "dropup " : "dropdown ") + (open ? 'open':'') } style={ {display: 'inline-block'} }>
@@ -63,6 +64,7 @@ class Dropdown extends Component {
                 {
                     split ?
                         <ButtonGroup>
+                            { iconName ? <i className={"fa fa-"+iconName} aria-hidden="true" style={{marginRight:'.3rem'}}></i> : null }
                             <Button label={label} type={type} size={size}/>
                             {
                                 caret ?
@@ -74,6 +76,7 @@ class Dropdown extends Component {
                         </ButtonGroup>
                         :
                         <button className={`btn btn-${size} btn-${type}` }>
+                            { iconName ? <i className={"fa fa-"+iconName} aria-hidden="true" style={{marginRight:'.3rem'}}></i> : null }
                             { label }
                             {
                                 caret ?
@@ -87,7 +90,10 @@ class Dropdown extends Component {
                 {
                     options.map((item,i)=>{
                         return <li key={ i } ref="li" className={"dropdown-li "+(item.disabled ? "disabled":"")} style={ {cursor: 'pointer'} } onClick={ _=>this.itemClick(item) }>
-                            <a style={item.toggle? {color:'#aaa'}:{}}>{item.label}</a>
+                            <a style={item.toggle? {color:'#aaa'}:{}}>
+                                { item.iconName ? <i className={"fa fa-"+item.iconName} aria-hidden="true" style={{display:'inline-block',width: '25px'}}></i> : null }
+                                {item.label}
+                            </a>
                         </li>
                     })
                 }

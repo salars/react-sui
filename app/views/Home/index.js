@@ -224,10 +224,10 @@ export default class Home extends React.Component {
                                     }
                                     },
                                 ]}/>
-                                <Dropdown label="primary" type="primary" options={[
-                                    {label: "option1"},
-                                    {label: "option2"},
-                                    {label: "option3"},
+                                <Dropdown label="primary" type="primary" iconName="list" options={[
+                                    {label: "option1",iconName:'bath'},
+                                    {label: "option2",iconName:'address-book-o'},
+                                    {label: "option3",iconName:'id-card-o'},
                                 ]}/>
                                 <Dropdown label="warning" type="warning" size="sm" options={[
                                     {label: "option1"},
@@ -263,13 +263,13 @@ export default class Home extends React.Component {
                                         pageLength: 10,
                                     }}
                                     buttons={[
-                                        {label: '按钮1',callback: (res)=>{ console.log(res) } },
-                                        {label: '按钮2',callback: (res)=>{ console.log(res) } },
-                                        {label: '按钮3',className:'select-none-hide',callback: (res)=>{ console.log(res) } },
+                                        {label: '按钮1', iconName:'edit', callback: (res)=>{ console.log(res) } },
+                                        {label: '按钮2', iconName:'send', callback: (res)=>{ console.log(res) } },
+                                        {label: '按钮3', className:'select-none-hide', callback: (res)=>{ console.log(res) } },
                                     ]}
                                     columns={[
                                         { label: 'id',value:'id',sort:true },
-                                        { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <a>{data+row.nickName}</a>} },
+                                        { label: '姓名',value:'name',sort:true, render: (data,row)=>{ return <Button type="primary" label={data}/>} },
                                         { label: '昵称',value:'nickName',simpleInfo:true },
                                         { label: '手机号',value:'tel' },
                                     ]}
