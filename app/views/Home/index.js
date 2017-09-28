@@ -14,7 +14,10 @@ import Badges from 'react-sui/Badges';
 import CheckBox from 'react-sui/CheckBox';
 import Radio from 'react-sui/Radio';
 import Select from 'react-sui/Select';
+import FileUpload from 'react-sui/FileUpload';
+
 import Input from 'react-sui/Input';
+import TextArea from 'react-sui/TextArea';
 
 const ColorBlock = (props) => {
     return (
@@ -33,7 +36,8 @@ export default class Home extends React.Component {
         current: 1,
         val:'',
         val1:'',
-        val2:''
+        val2:'',
+        val3:''
     };
 
     radioChange(name, value) {
@@ -48,6 +52,20 @@ export default class Home extends React.Component {
         this.setState({val2:value});
         console.log(name,value);
     }
+    areaChange(name,value){
+        this.setState({val3:value});
+        console.log(name,value);
+    }
+
+    setMyState(key, value) {
+        console.log("setMyState");
+        console.log(value);
+    }
+
+    componentWillUpdate(nextProps,nextState) {
+        console.log("new state get: "+nextState.file);
+    }
+
     render() {
         return (
             <div>
@@ -329,7 +347,29 @@ export default class Home extends React.Component {
                             <Section title="Input">
                                 <Input name="ok" value={ this.state.val2 } change={(name, value) => {
                                     this.inputChange(name, value)
-                                }} placeholder="请选择" maxlength='8'/>
+                                }} placeholder="请选择" maxlength='8' min='1'/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="TextArea">
+                            <Section title="TextArea">
+                                <TextArea name="textArea" value={ this.state.val3 } change={(name, value) => {
+                                    this.areaChange(name, value)
+                                }} maxlength='100' character/>
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        <Panel title="FileUpload">
+                            <Section title="FileUpload">
+                                <FileUpload text="" fileType={"image"} requirePath={false} change={(name, value) => {
+                                    return this.setMyState(name, value)
+                                }} />
                             </Section>
                         </Panel>
                     </Col>

@@ -1,94 +1,184 @@
 //checkBox样式
-.checkBox{
+.checkBox {
   display: inline-block;
   width: .95rem;
   height: .95rem;
   background: url(../../src/CheckBox/images/unChecked.png) no-repeat;
   background-size: 100% 100%;
 }
-.checkBox.checked{
+
+.checkBox.checked {
   background: url(../../src/CheckBox/images/checked.png) no-repeat;
   background-size: 100% 100%;
 }
 
 //radio样式
-.radio-item{
-  display:inline-block;
-  margin-right:.4rem;
-  line-height:1.7rem;
-  vertical-align:middle;
-  cursor:pointer;
-  &:before{
-    content:"";
-    display:inline-block;
-    vertical-align:middle;
-    margin-top:-.1rem;
-    border-radius:50%;
-    width:.7rem;
-    height:.7rem;
-    border:1px solid #999;
-    margin-right:.25rem;
+.radio-item {
+  display: inline-block;
+  margin-right: .4rem;
+  line-height: 1.7rem;
+  vertical-align: middle;
+  cursor: pointer;
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -.1rem;
+    border-radius: 50%;
+    width: .7rem;
+    height: .7rem;
+    border: 1px solid #999;
+    margin-right: .25rem;
   }
-  &.disabled{
-    &:before{
-      border-color:#ccc;
+  &.disabled {
+    &:before {
+      border-color: #ccc;
     }
   }
-  &.checked{
-    &:before{
-      border:.2rem solid #369be9;
+  &.checked {
+    &:before {
+      border: .2rem solid #369be9;
     }
   }
 }
 
 //select样式
-.select{
-  &.form-control{
-    height:auto;
-    min-height:1.5rem;
-    .tags-container{
-      margin-top:-.25rem;
+.select {
+  &.form-control {
+    height: auto;
+    min-height: 1.5rem;
+    .tags-container {
+      margin-top: -.25rem;
     }
-    .caret{
-      position:absolute;
-      top:.15rem;
-      right:.25rem;
-    }
-  }
-  position:relative;
-  cursor:pointer;
-  .dropdown-toggle{
-    line-height:1.5 - 2*.3rem;
-    .caret{
-      float:right;
-      color:#929292;
-      margin-top:1.5/2-.3rem;
+    .caret {
+      position: absolute;
+      top: .15rem;
+      right: .25rem;
     }
   }
-  .dropdown-menu{
-    z-index:99;
-    max-height:15rem;
-    min-width:100%;
-    overflow-y:auto;
-    &>li{
-      line-height:1.5rem;
-      text-indent:.25rem;
-      &:hover{
-        background:#f2f2f2;
+  position: relative;
+  cursor: pointer;
+  .dropdown-toggle {
+    line-height: 1.5 - 2*.3rem;
+    .caret {
+      float: right;
+      color: #929292;
+      margin-top: 1.5/2-.3rem;
+    }
+  }
+  .dropdown-menu {
+    z-index: 99;
+    max-height: 15rem;
+    min-width: 100%;
+    overflow-y: auto;
+    & > li {
+      line-height: 1.5rem;
+      text-indent: .25rem;
+      &:hover {
+        background: #f2f2f2;
       }
     }
   }
-  .select-tags{
-    margin-right:.25rem;
-    background:#f2f2f2;
-    display:inline-block;
-    padding:0 .15rem;
-    position:relative;
-    margin-top:.25rem;
-    .glyphicon{
-      transform:scale(.7);
-      position:relative;
-      top:.15rem;
+  .select-tags {
+    margin-right: .25rem;
+    background: #f2f2f2;
+    display: inline-block;
+    padding: 0 .15rem;
+    position: relative;
+    margin-top: .25rem;
+    .glyphicon {
+      transform: scale(.7);
+      position: relative;
+      top: .15rem;
     }
   }
 }
+
+// FileUpload 样式
+.file-block {
+  width: 100%;
+  overflow: hidden;
+  .file-box {
+    border-radius: 0.18rem;
+    width: 6.25rem;
+    height: 2.5rem;
+    background-color: #d9534f;
+    text-align: center;
+    position: relative;
+    .file-inner-icon {
+      width: 100%;
+      height: 100%;
+      float: left;
+      .file-upload {
+        font-size: 2.5rem;
+        color: #fff;
+        margin-top: 0.1rem
+      }
+    }
+    .file-box-content {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      .file-input {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        font-size: 0;
+      }
+    }
+  }
+
+  .file-left-con {
+    float: left;
+    .file-img {
+      width: 6.5rem;
+      height: 6.5rem;
+      overflow: hidden;
+      border-radius: 0.2rem;
+      position: relative;
+       .file-actions{
+         position: absolute;
+         display: inline-block;
+         width: 100%;
+         height: 100%;
+         left: 0;
+         top: 0;
+         cursor: pointer;
+         text-align: center;
+         color: #fff;
+         opacity: 0;
+         font-size: 20px;
+         background-color: rgba(0,0,0,.5);
+         transition: opacity .3s;
+          .file--dele{
+            display:none;
+          }
+       }
+      .file-actions:after{
+        display: inline-block;
+        content: "";
+        height: 100%;
+        vertical-align: middle;
+      }
+      .file-actions:hover{
+        opacity: 1;
+      }
+      .file-actions:hover span{
+        display: inline-block;
+      }
+    }
+  }
+
+  .file-path {
+    height: 2.5rem;
+    width: auto;
+    line-height: 2.5rem;
+    padding-left: 0.652rem;
+  }
+
+}
+
