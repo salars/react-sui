@@ -405,7 +405,18 @@ export default class Home extends React.Component {
                             </Panel>
                         </Col>
                     </Row>
-                </Container>
+                <Row>
+                    <Col md="12">
+                        <Panel title="FileUpload">
+                            <Section title="FileUpload">
+                                <FileUpload text="" fileType={"image"} requirePath={false} change={(name, value) => {
+                                    return this.setMyState(name, value)
+                                }} />
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+            </Container>
             </div>
         )
     }
