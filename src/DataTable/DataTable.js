@@ -8,7 +8,6 @@ import Input from 'react-sui/Input';
 import Dropdown from 'react-sui/Dropdown';
 import defaultConfig from './config';
 import {autobind} from 'core-decorators';
-import NO_RESULT_IMG from './images/no_result.png';
 @autobind
 class DataTable extends Component {
     static props = {
@@ -86,13 +85,13 @@ class DataTable extends Component {
 
             //模拟数据
             let data = [];
-            const total = 104;
-            for (let i = 0; i < pageSize; i++) {
+            const total = 0;
+            /*for (let i = 0; i < pageSize; i++) {
                 const sum = (pageNum - 1) * pageSize + i + 1;
                 if (sum <= total) {
                     data.push({id: sum, name: 'test' + sum, nickName: 'nick' + sum, tel: '12341341234'});
                 }
-            }
+            }*/
             const {checkAll} = this.state;
 
             let arr = [];
@@ -271,8 +270,16 @@ class DataTable extends Component {
                                     return <th key={i}
                                                onClick={ () => this.thClick(item) }
                                                style={ styleObj }
-                                               className={ (item.sort ? "sorting " : "") + (item.asc ? "sorting_asc " : "") + (item.desc ? "sorting_desc" : "")}>
+                                           >
                                         { item.label }
+                                        {
+                                            item.sort ?
+                                                <div style={{position:'absolute',right:'10px',top:'4px'}}>
+                                                    <i className="fa fa-caret-up" aria-hidden="true" style={{display:'block',fontSize:'18px',color:item.asc ? t.PRIMARY_COLOR:t.GRAY_BOLD}}> </i>
+                                                    <i className="fa fa-caret-down" aria-hidden="true" style={{display:'block',fontSize:'18px',color:item.desc ? t.PRIMARY_COLOR:t.GRAY_BOLD,transform:'translate(0,-7px)'}}> </i>
+                                                </div>
+                                                : null
+                                        }
                                     </th>
                                 }
                             })
@@ -320,10 +327,7 @@ class DataTable extends Component {
                             :
                             <tbody>
                             <tr>
-                                <td colSpan={ columns.length + (select ? 1 : 0) }
-                                    style={{padding: '5rem 0', textAlign: 'center', backgroundColor: t.WHITE}}>
-                                    <img src={ NO_RESULT_IMG }/>
-                                </td>
+                                <td colSpan={ columns.length + (select ? 1 : 0) } style={{height: '18rem'}} className="no-result-img"> </td>
                             </tr>
                             </tbody>
                     }
