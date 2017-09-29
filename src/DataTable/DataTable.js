@@ -203,7 +203,6 @@ class DataTable extends Component {
         container.innerHTML = val;
         container.style.left = offsetLeft + 'px';
         container.style.top = offsetTop + e.target.parentNode.parentNode.parentNode.offsetTop - container.offsetHeight + 5 + 'px';
-        return false;
     }
     render() {
         const {t, columns, striped, bordered, hover, select, buttons, selectAllButton} = this.props;
