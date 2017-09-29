@@ -197,13 +197,12 @@ class DataTable extends Component {
 
     showDetailInfo(e,val){
         e.stopPropagation();
-        let container = document.getElementsByClassName('simple-info-container')[0];
+        let container = this.refs.dataTable.parentNode.getElementsByClassName('simple-info-container')[0];
         const { offsetLeft, offsetTop } = e.target;
         container.style.display = 'block';
         container.innerHTML = val;
         container.style.left = offsetLeft + 'px';
         container.style.top = offsetTop + e.target.parentNode.parentNode.parentNode.offsetTop - container.offsetHeight + 5 + 'px';
-        return false;
     }
     render() {
         const {t, columns, striped, bordered, hover, select, buttons, selectAllButton} = this.props;
@@ -218,7 +217,7 @@ class DataTable extends Component {
             pageLengthConfig.push({label: config.lengthMenu[i], value: config.lengthMenu[i]});
         }
         return (
-            <div className="data-table">
+            <div className="data-table" ref="dataTable">
                 <div style={{marginBottom: t.MARGIN_MEDIUM}} className="buttons">
                     {
                         selectAllButton ?
