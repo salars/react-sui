@@ -18,6 +18,7 @@ import FileUpload from 'react-sui/FileUpload';
 
 import Input from 'react-sui/Input';
 import TextArea from 'react-sui/TextArea';
+import Switch from 'react-sui/Switch';
 
 const ColorBlock = (props) => {
     return (
@@ -33,6 +34,7 @@ export default class Home extends React.Component {
     state = {
         fluid: false,
         checked: false,
+        switchStatus: false,
         current: 1,
         val:'',
         val1:'',
@@ -371,6 +373,17 @@ export default class Home extends React.Component {
                                     return this.setMyState(name, value)
                                 }} />
                             </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        <Panel title="Switch">
+                            <div>
+                                <label>开关：</label>
+                                <Switch name='switch' text={{checked:'开',unchecked:'关'}} value={ this.state.switchStatus } change={ (name,value)=>{console.log(name,value);this.setState({switchStatus:value})}}/>
+                                <Switch name='switch' text={{checked:'1',unchecked:'0'}} value={ this.state.switchStatus } change={ (name,value)=>this.setState({switchStatus:value})}/>
+                            </div>
                         </Panel>
                     </Col>
                 </Row>
