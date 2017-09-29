@@ -182,3 +182,27 @@
 
 }
 
+//TagSelect样式
+.tag-select{
+  .tag-item{
+    display: inline-block;
+    margin-right: .5rem;
+    padding: .2rem .8rem;
+    border: 1px solid #b0b0b0;
+    color: #b0b0b0;
+    font-size: .6rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.215,.61,.355,1);
+  }
+  .tag-item.checked{
+    background-color: #369be9;
+    -webkit-transition: all .3s cubic-bezier(.215,.61,.355,1);
+    -moz-transition: all .3s cubic-bezier(.215,.61,.355,1);
+    -o-transition: all .3s cubic-bezier(.215,.61,.355,1);
+    transition: all .3s cubic-bezier(.215,.61,.355,1);
+    color: #fff;
+    border: 1px solid #369be9;
+  }
+}
+
