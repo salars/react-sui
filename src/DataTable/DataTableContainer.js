@@ -35,6 +35,7 @@ class DataTableContainer extends Component {
                     padding: '.5rem',
                     maxWidth: '20rem',
                     wordBreak: 'break-all',
+                    display: 'none'
                 }}> </div>
             </div>
         )
