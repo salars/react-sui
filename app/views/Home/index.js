@@ -19,6 +19,7 @@ import Input from 'react-sui/Input';
 import TextArea from 'react-sui/TextArea';
 import TagSelect from 'react-sui/TagSelect';
 import Switch from 'react-sui/Switch';
+import BackTop from 'react-sui/BackTop';
 
 const ColorBlock = (props) => {
     return (
@@ -40,7 +41,7 @@ export default class Home extends React.Component {
         val1: '',
         val2: '',
         val3: [],
-        val4:''
+        val4: ''
     };
 
     radioChange(name, value) {
@@ -67,10 +68,6 @@ export default class Home extends React.Component {
         console.log(value);
     }
 
-    tagChange(name,value){
-        console.log(name,value);
-    }
-
     // componentWillUpdate(nextProps, nextState) {
     //     console.log("new state get: " + nextState.file);
     // }
@@ -79,6 +76,7 @@ export default class Home extends React.Component {
         return (
             <div>
                 <Container fluid={this.state.fluid}>
+                    <BackTop/>
                     <Row gutter>
                         <Col md="12">
                             <Panel title="BreadCrumbs">
@@ -588,17 +586,18 @@ export default class Home extends React.Component {
                                 <TextArea name="textArea" value={this.state.val3} change={(name, value) => {
                                     this.areaChange(name, value)
                                 }} maxlength='100' character/>
-                            </Section>
-                        </Panel>
-                    </Col>
-                </Row>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col md="12">
                             <Panel title="FileUpload">
                                 <Section title="FileUpload">
-                                    <FileUpload text="" fileType={"image"} requirePath={false} change={(name, value) => {
-                                        return this.setMyState(name, value)
-                                    }} />
+                                    <FileUpload text="" fileType={"image"} requirePath={false}
+                                                change={(name, value) => {
+                                                    return this.setMyState(name, value)
+                                                }}/>
                                 </Section>
                             </Panel>
                         </Col>
@@ -608,14 +607,14 @@ export default class Home extends React.Component {
                             <Panel title="TagSelect">
                                 <Section title="TagSelect">
                                     <TagSelect name='TagSelect' value={this.state.val4} options={[
-                                        {label:'鲁班七号',value:'1'},
-                                        {label:'后裔',value:'2'},
-                                        {label:'狄仁杰',value:'3'},
-                                        {label:'刘备',value:'4'}
-                                        ]}
-                                               change={(name,value)=>{
-                                        this.tagChange(name,value);
-                                    }}/>
+                                        {label: '鲁班七号', value: '1'},
+                                        {label: '后裔', value: '2'},
+                                        {label: '狄仁杰', value: '3'},
+                                        {label: '刘备', value: '4'}
+                                    ]}
+                                               change={(name, value) => {
+                                                   console.log(name,value);
+                                               }}/>
                                 </Section>
                             </Panel>
                         </Col>
@@ -625,8 +624,14 @@ export default class Home extends React.Component {
                             <Panel title="Switch">
                                 <div>
                                     <label>开关：</label>
-                                    <Switch name='switch' text={{checked:'开',unchecked:'关'}} value={ this.state.switchStatus } change={ (name,value)=>{console.log(name,value);this.setState({switchStatus:value})}}/>
-                                    <Switch name='switch' text={{checked:'1',unchecked:'0'}} value={ this.state.switchStatus } change={ (name,value)=>this.setState({switchStatus:value})}/>
+                                    <Switch name='switch' text={{checked: '开', unchecked: '关'}}
+                                            value={this.state.switchStatus} change={(name, value) => {
+                                        console.log(name, value);
+                                        this.setState({switchStatus: value})
+                                    }}/>
+                                    <Switch name='switch' text={{checked: '1', unchecked: '0'}}
+                                            value={this.state.switchStatus}
+                                            change={(name, value) => this.setState({switchStatus: value})}/>
                                 </div>
                             </Panel>
                         </Col>
