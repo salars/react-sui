@@ -15,9 +15,9 @@ import CheckBox from 'react-sui/CheckBox';
 import Radio from 'react-sui/Radio';
 import Select from 'react-sui/Select';
 import FileUpload from 'react-sui/FileUpload';
-
 import Input from 'react-sui/Input';
 import TextArea from 'react-sui/TextArea';
+import TagSelect from 'react-sui/TagSelect';
 import Switch from 'react-sui/Switch';
 
 const ColorBlock = (props) => {
@@ -39,7 +39,8 @@ export default class Home extends React.Component {
         val: '',
         val1: '',
         val2: '',
-        val3: ''
+        val3: [],
+        val4:''
     };
 
     radioChange(name, value) {
@@ -66,9 +67,13 @@ export default class Home extends React.Component {
         console.log(value);
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        console.log("new state get: " + nextState.file);
+    tagChange(name,value){
+        console.log(name,value);
     }
+
+    // componentWillUpdate(nextProps, nextState) {
+    //     console.log("new state get: " + nextState.file);
+    // }
 
     render() {
         return (
@@ -410,6 +415,23 @@ export default class Home extends React.Component {
                     </Row>
                     <Row>
                         <Col md="12">
+                            <Panel title="TagSelect">
+                                <Section title="TagSelect">
+                                    <TagSelect name='TagSelect' value={this.state.val4} options={[
+                                        {label:'鲁班七号',value:'1'},
+                                        {label:'后裔',value:'2'},
+                                        {label:'狄仁杰',value:'3'},
+                                        {label:'刘备',value:'4'}
+                                        ]}
+                                               change={(name,value)=>{
+                                        this.tagChange(name,value);
+                                    }}/>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
                             <Panel title="Switch">
                                 <div>
                                     <label>开关：</label>
@@ -419,6 +441,7 @@ export default class Home extends React.Component {
                             </Panel>
                         </Col>
                     </Row>
+
                 </Container>
             </div>
         )
