@@ -37,7 +37,7 @@ class BackTop extends Component {
         const {show} = this.state;
         return (
             <div className={'back-top' + (show ? ' show' : '')} onClick={ this.goTop }>
-                回到顶部
+                <i className="fa fa-chevron-up" aria-hidden="true" style={{fontSize:'1.4rem',color:'rgb(54, 155, 233)'}}></i>
             </div>
         )
     }
