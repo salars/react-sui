@@ -206,6 +206,7 @@
   }
 }
 
+<<<<<<< HEAD
 //DataTable样式
 .data-table-container{
   .data-table {
@@ -263,3 +264,23 @@
   left: 100%;
   margin-left: -19px;
 }
+
+//BackTop样式
+.back-top{
+  position:fixed;
+  bottom:5rem;
+  right:1rem;
+  height:2rem;
+  width:2rem;
+  z-index:999;
+  opacity:0;
+  transition:opacity 1s;
+  &:hover{
+    cursor:pointer;
+  }
+  &.show{
+    opacity:1;
+    transition:opacity 2s;
+  }
+}
+

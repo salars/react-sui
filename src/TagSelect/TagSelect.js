@@ -35,9 +35,9 @@ class TagSelect extends Component {
         this.setState({selected:selected});
         change && change(name,selected.join(','));
     }
-    componentWillReceiveProps(){
+    componentWillReceiveProps(nextProps){
         const {value} = this.props;
-        if(value){
+        if(nextProps.value){
             this.setState({selected:(value.split(','))});
         }
     }
