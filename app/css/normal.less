@@ -182,3 +182,22 @@
 
 }
 
+// 弹窗样式
+
+.popup-block{
+
+  .fade.show {
+    opacity: 1;
+  }
+  .modal.show .modal-dialog {
+    -webkit-transform: translate(0,0) !important;
+    transform: translate(0,0)!important;
+    transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+  }
+  .modal-title{
+    float: left;
+  }
+  .modal-backdrop.show {
+    background-color: rgba(0,0,0,0.5);
+  }
+}

@@ -15,6 +15,8 @@ import CheckBox from 'react-sui/CheckBox';
 import Radio from 'react-sui/Radio';
 import Select from 'react-sui/Select';
 import FileUpload from 'react-sui/FileUpload';
+import { success, confirm } from 'react-sui/PopUp';
+
 
 import Input from 'react-sui/Input';
 import TextArea from 'react-sui/TextArea';
@@ -62,8 +64,16 @@ export default class Home extends React.Component {
         console.log(value);
     }
 
+    showModal(){
+        // success("确定执行操作")
+        confirm("确定执行操作么?", (fnClose)=>{
+            fnClose();
+        })
+    }
+
     componentWillUpdate(nextProps,nextState) {
         console.log("new state get: "+nextState.file);
+
     }
 
     render() {
@@ -363,13 +373,27 @@ export default class Home extends React.Component {
                         </Panel>
                     </Col>
                 </Row>
-                <Row>
+                <Row gutter>
                     <Col md="12">
                         <Panel title="FileUpload">
                             <Section title="FileUpload">
                                 <FileUpload text="" fileType={"image"} requirePath={false} change={(name, value) => {
                                     return this.setMyState(name, value)
                                 }} />
+                            </Section>
+                        </Panel>
+                    </Col>
+                </Row>
+                <Row gutter>
+                    <Col md="12">
+                        <Panel title="PopUp">
+                            <Section title="">
+                                <Button onClick={_ => {
+                                    this.showModal()
+                                }}
+                                        label="点击弹窗" type="primary">
+                                </Button>
+                                {/*<PopUp text={"here is my text ....."} title={"title"} />*/}
                             </Section>
                         </Panel>
                     </Col>
