@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -16,6 +18,8 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _coreDecorators = require('core-decorators');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24,55 +28,41 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var BreadCrumb = function (_Component) {
-    _inherits(BreadCrumb, _Component);
+var RadioItem = (0, _coreDecorators.autobind)(_class = function (_Component) {
+    _inherits(RadioItem, _Component);
 
-    function BreadCrumb() {
-        _classCallCheck(this, BreadCrumb);
+    function RadioItem() {
+        _classCallCheck(this, RadioItem);
 
-        return _possibleConstructorReturn(this, (BreadCrumb.__proto__ || Object.getPrototypeOf(BreadCrumb)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (RadioItem.__proto__ || Object.getPrototypeOf(RadioItem)).apply(this, arguments));
     }
 
-    _createClass(BreadCrumb, [{
+    _createClass(RadioItem, [{
         key: 'render',
         value: function render() {
             var _props = this.props,
-                t = _props.t,
-                pathInfo = _props.pathInfo;
+                checked = _props.checked,
+                click = _props.click,
+                data = _props.data;
+            var label = data.label,
+                value = data.value;
 
-            return pathInfo instanceof Array && pathInfo.length > 0 ? _react2.default.createElement(
-                'ul',
-                { className: 'breadcrumb', style: {
-                        backgroundColor: 'white'
+            return _react2.default.createElement(
+                'div',
+                { className: "radio-item " + (checked ? " checked" : ""), onClick: function onClick(_) {
+                        click && click(value);
                     } },
-                pathInfo.map(function (item, i) {
-                    return _react2.default.createElement(
-                        'li',
-                        { className: 'breadcrumb-item ' + (item.url ? "" : ' active'), key: i, onClick: function onClick() {
-                                window.location.href = item.url;
-                            } },
-                        item.url ? _react2.default.createElement(
-                            'span',
-                            { style: {
-                                    color: t.BREAD_COLOR,
-                                    cursor: 'pointer'
-                                } },
-                            item.content
-                        ) : _react2.default.createElement(
-                            'span',
-                            null,
-                            item.content
-                        )
-                    );
-                })
-            ) : null;
+                label
+            );
         }
     }]);
 
-    return BreadCrumb;
-}(_react.Component);
+    return RadioItem;
+}(_react.Component)) || _class;
 
-BreadCrumb.props = {
-    pathInfo: _propTypes2.default.array
+RadioItem.props = {
+    data: _propTypes2.default.string,
+    click: _propTypes2.default.func,
+    checked: _propTypes2.default.bool
 };
-exports.default = (0, _helpers.composeTheme)(BreadCrumb);
+exports.default = (0, _helpers.composeTheme)(RadioItem);

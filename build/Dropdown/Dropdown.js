@@ -52,11 +52,13 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
     _createClass(Dropdown, [{
         key: 'itemClick',
         value: function itemClick(item) {
-            this.setState(function (state) {
-                return { open: false };
-            }, function () {
-                item.fnClick && item.fnClick();
-            });
+            if (this.props.toggle) {
+                item.toggle = !item.toggle;
+                this.setState({ open: true });
+            }
+            if (!item.disabled) {
+                item.fnClick && item.fnClick(item.label, item.value, item.toggle);
+            }
         }
     }, {
         key: 'globalEventHandler',
@@ -93,7 +95,8 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
                 split = _props.split,
                 caret = _props.caret,
                 right = _props.right,
-                up = _props.up;
+                up = _props.up,
+                iconName = _props.iconName;
             var open = this.state.open;
 
             return _react2.default.createElement(
@@ -105,6 +108,7 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
                     split ? _react2.default.createElement(
                         _Button.ButtonGroup,
                         null,
+                        iconName ? _react2.default.createElement('i', { className: "fa fa-" + iconName, 'aria-hidden': 'true', style: { marginRight: '.3rem' } }) : null,
                         _react2.default.createElement(_Button.Button, { label: label, type: type, size: size }),
                         caret ? _react2.default.createElement(
                             'button',
@@ -114,6 +118,7 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
                     ) : _react2.default.createElement(
                         'button',
                         { className: 'btn btn-' + size + ' btn-' + type },
+                        iconName ? _react2.default.createElement('i', { className: "fa fa-" + iconName, 'aria-hidden': 'true', style: { marginRight: '.3rem' } }) : null,
                         label,
                         caret ? _react2.default.createElement('i', { className: "fa " + (up ? "fa-caret-up" : "fa-caret-down"), style: { marginLeft: t.MARGIN_MEDIUM } }) : null
                     )
@@ -124,12 +129,13 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
                     options.map(function (item, i) {
                         return _react2.default.createElement(
                             'li',
-                            { key: i, className: item.disabled ? "disabled" : "", style: { cursor: 'pointer' }, onClick: function onClick(_) {
+                            { key: i, ref: 'li', className: "dropdown-li " + (item.disabled ? "disabled" : ""), style: { cursor: 'pointer' }, onClick: function onClick(_) {
                                     return _this2.itemClick(item);
                                 } },
                             _react2.default.createElement(
                                 'a',
-                                null,
+                                { style: item.toggle ? { color: '#aaa' } : {} },
+                                item.iconName ? _react2.default.createElement('i', { className: "fa fa-" + item.iconName, 'aria-hidden': 'true', style: { display: 'inline-block', width: '25px' } }) : null,
                                 item.label
                             )
                         );
@@ -150,7 +156,9 @@ Dropdown.props = {
     split: _propTypes2.default.bool,
     caret: _propTypes2.default.bool,
     right: _propTypes2.default.bool,
-    up: _propTypes2.default.bool
+    up: _propTypes2.default.bool,
+    toggle: _propTypes2.default.bool,
+    iconName: _propTypes2.default.string
 };
 Dropdown.defaultProps = {
     type: 'default',
@@ -158,6 +166,8 @@ Dropdown.defaultProps = {
     split: false,
     caret: true,
     right: false,
-    up: false
+    up: false,
+    toggle: false,
+    toggleStatus: false
 };
 exports.default = (0, _helpers.composeTheme)(Dropdown);
