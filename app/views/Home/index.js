@@ -20,6 +20,7 @@ import TextArea from 'react-sui/TextArea';
 import TagSelect from 'react-sui/TagSelect';
 import Switch from 'react-sui/Switch';
 import BackTop from 'react-sui/BackTop';
+import { success, confirm } from 'react-sui/PopUp';
 
 const ColorBlock = (props) => {
     return (
@@ -66,6 +67,12 @@ export default class Home extends React.Component {
     setMyState(key, value) {
         console.log("setMyState");
         console.log(value);
+    }
+
+    showModal(){
+        confirm("您确定修改?", function ( fnclose ) {
+            fnclose();
+        })
     }
 
     // componentWillUpdate(nextProps, nextState) {
@@ -446,7 +453,19 @@ export default class Home extends React.Component {
                             </Panel>
                         </Col>
                     </Row>
-
+                    <Row gutter>
+                        <Col md="12">
+                            <Panel title="PopUp">
+                                <Section title="">
+                                    <Button onClick={_ => {
+                                        this.showModal()
+                                    }}
+                                            label="点击弹窗" type="primary">
+                                    </Button>
+                                </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
         )
