@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {composeTheme} from '../helpers';
 import {autobind} from 'core-decorators';
-import './style.less';
+import '../../app/css/normal.less';
 
 @autobind
 class DataTableContainer extends Component {
@@ -35,6 +35,7 @@ class DataTableContainer extends Component {
                     padding: '.5rem',
                     maxWidth: '20rem',
                     wordBreak: 'break-all',
+                    display: 'none'
                 }}> </div>
             </div>
         )

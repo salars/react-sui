@@ -20,18 +20,19 @@ class Input extends Component {
 
     //默认value为空
     static defaultProps = {
-        value:''
+        value: ''
     };
+
     onChange(e) {
         const {value} = e.target;
         const {name, change, maxlength} = this.props;
-         if (maxlength && value.length > maxlength) {
-             let valStr = value.slice(0, maxlength);
-             this.refs.input.value = valStr;
-             change(name, value);
-         } else {
+        if (maxlength && value.length > maxlength) {
+            let valStr = value.slice(0, maxlength);
+            this.refs.input.value = valStr;
             change(name, value);
-         }
+        } else {
+            change(name, value);
+        }
     }
 
     //监听value变化 判断初始值是否为空
@@ -47,7 +48,7 @@ class Input extends Component {
     // }
 
     render() {
-        const {type, value, maxlength, placeholder, min, unit,formatter} = this.props;
+        const {type, value, maxlength, placeholder, min, unit, formatter} = this.props;
         let newValue = value;
         if (formatter) {
             newValue = formatter(value);
@@ -56,8 +57,8 @@ class Input extends Component {
             <div style={{
                 position: 'relative'
             }}>
-                <input type={type || "text"} value={ newValue } ref="input" className="form-control"
-                       onBlur={this.onChange} maxLength={maxlength || 999} onChange={ this.onChange }
+                <input type={type || "text"} value={newValue} ref="input" className="form-control"
+                       onBlur={this.onChange} maxLength={maxlength || 999} onChange={this.onChange}
                        placeholder={placeholder} step="any" min={min}/>
                 <span style={{
                     position: 'absolute',
@@ -68,5 +69,6 @@ class Input extends Component {
         )
     }
 }
+
 
 export default composeTheme(Input);

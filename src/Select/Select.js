@@ -6,7 +6,6 @@ import '../../app/css/normal.less';
 
 
 @autobind
-
 class Select extends Component {
     static props = {
         name: PropTypes.string,

@@ -40,6 +40,18 @@ app.get('*', (req, res) => {
         res.end(html);
     })
 });
+
+// *********************
+// const app1 = express();
+// app1.get('/test', (req, res, next) => {
+//     console.log(req);
+//      res.send("query: "+ req.query.name);
+// });
+//
+// app1.listen(9001, () => {
+//     console.log(`Listening at http://localhost:${9001}`);
+// });
+
 const port = 9000;
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`);
