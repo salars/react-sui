@@ -289,7 +289,7 @@ export default class Home extends React.Component {
                                         }}
                                         buttons={[
                                             {
-                                                label: '按钮1', callback: (res) => {
+                                                label: '按钮1',iconName:'html5', callback: (res) => {
                                                 console.log(res)
                                             }
                                             },
