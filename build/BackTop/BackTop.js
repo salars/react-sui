@@ -14,6 +14,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _helpers = require('../helpers');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _coreDecorators = require('core-decorators');
 
 require('../../app/css/normal.less');
@@ -26,61 +30,66 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DataTableContainer = (0, _coreDecorators.autobind)(_class = function (_Component) {
-    _inherits(DataTableContainer, _Component);
+var scrollTop = 100;
 
-    function DataTableContainer() {
-        _classCallCheck(this, DataTableContainer);
+var BackTop = (0, _coreDecorators.autobind)(_class = function (_Component) {
+    _inherits(BackTop, _Component);
 
-        return _possibleConstructorReturn(this, (DataTableContainer.__proto__ || Object.getPrototypeOf(DataTableContainer)).apply(this, arguments));
+    function BackTop() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, BackTop);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BackTop.__proto__ || Object.getPrototypeOf(BackTop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            show: false
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    _createClass(DataTableContainer, [{
-        key: 'globalEventHandler',
-        value: function globalEventHandler(e) {
-            var node = this.refs.simpleInfoHandler;
-            if (!e.path.includes(node)) {
-                node.style.display = 'none';
+    _createClass(BackTop, [{
+        key: 'onScroll',
+        value: function onScroll() {
+            var top = document.body.scrollTop;
+            if (top > scrollTop) {
+                this.setState({ show: true });
+            } else {
+                this.setState({ show: false });
             }
         }
     }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            document.body.addEventListener('click', this.globalEventHandler);
+        key: 'goTop',
+        value: function goTop() {
+            document.documentElement.scrollTop = document.body.scrollTop = 0;
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            document.addEventListener("scroll", this.onScroll);
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            document.body.removeEventListener('click', this.globalEventHandler);
+            document.removeEventListener("scroll", this.onScroll);
         }
     }, {
         key: 'render',
         value: function render() {
-            var t = this.props.t;
+            var show = this.state.show;
 
             return _react2.default.createElement(
                 'div',
-                { className: 'data-table-container', style: { position: 'relative' } },
-                this.props.children,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'simple-info-container', ref: 'simpleInfoHandler', style: {
-                            position: 'absolute',
-                            background: t.PRIMARY_COLOR,
-                            color: t.WHITE,
-                            borderRadius: '.15rem',
-                            padding: '.5rem',
-                            maxWidth: '20rem',
-                            wordBreak: 'break-all',
-                            display: 'none'
-                        } },
-                    ' '
-                )
+                { className: 'back-top' + (show ? ' show' : ''), onClick: this.goTop },
+                _react2.default.createElement('i', { className: 'fa fa-chevron-up', 'aria-hidden': 'true', style: { fontSize: '1.4rem', color: 'rgb(54, 155, 233)' } })
             );
         }
     }]);
 
-    return DataTableContainer;
+    return BackTop;
 }(_react.Component)) || _class;
 
-exports.default = (0, _helpers.composeTheme)(DataTableContainer);
+exports.default = (0, _helpers.composeTheme)(BackTop);

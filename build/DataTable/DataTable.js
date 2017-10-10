@@ -46,10 +46,6 @@ var _config2 = _interopRequireDefault(_config);
 
 var _coreDecorators = require('core-decorators');
 
-var _no_result = require('./images/no_result.png');
-
-var _no_result2 = _interopRequireDefault(_no_result);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -138,20 +134,20 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
 
                 //模拟数据
                 var data = [];
-                var total = 104;
-                for (var _i = 0; _i < pageSize; _i++) {
-                    var sum = (pageNum - 1) * pageSize + _i + 1;
+                var total = 0;
+                /*for (let i = 0; i < pageSize; i++) {
+                    const sum = (pageNum - 1) * pageSize + i + 1;
                     if (sum <= total) {
-                        data.push({ id: sum, name: 'test' + sum, nickName: 'nick' + sum, tel: '12341341234' });
+                        data.push({id: sum, name: 'test' + sum, nickName: 'nick' + sum, tel: '12341341234'});
                     }
-                }
+                }*/
                 var checkAll = this.state.checkAll;
 
 
                 var arr = [];
                 if (checkAll) {
-                    for (var _i2 = 0; _i2 < data.length; _i2++) {
-                        arr.push(data[_i2].id);
+                    for (var _i = 0; _i < data.length; _i++) {
+                        arr.push(data[_i].id);
                     }
                 }
                 this.setState({ data: data, total: total, selectArr: arr });
@@ -269,7 +265,7 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
         key: 'showDetailInfo',
         value: function showDetailInfo(e, val) {
             e.stopPropagation();
-            var container = document.getElementsByClassName('simple-info-container')[0];
+            var container = this.refs.dataTable.parentNode.getElementsByClassName('simple-info-container')[0];
             var _e$target = e.target,
                 offsetLeft = _e$target.offsetLeft,
                 offsetTop = _e$target.offsetTop;
@@ -278,7 +274,6 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
             container.innerHTML = val;
             container.style.left = offsetLeft + 'px';
             container.style.top = offsetTop + e.target.parentNode.parentNode.parentNode.offsetTop - container.offsetHeight + 5 + 'px';
-            return false;
         }
     }, {
         key: 'render',
@@ -311,7 +306,7 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
             }
             return _react2.default.createElement(
                 'div',
-                { className: 'data-table' },
+                { className: 'data-table', ref: 'dataTable' },
                 _react2.default.createElement(
                     'div',
                     { style: { marginBottom: t.MARGIN_MEDIUM }, className: 'buttons' },
@@ -370,9 +365,23 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
                                                 onClick: function onClick() {
                                                     return _this5.thClick(item);
                                                 },
-                                                style: styleObj,
-                                                className: (item.sort ? "sorting " : "") + (item.asc ? "sorting_asc " : "") + (item.desc ? "sorting_desc" : "") },
-                                            item.label
+                                                style: styleObj
+                                            },
+                                            item.label,
+                                            item.sort ? _react2.default.createElement(
+                                                'div',
+                                                { style: { position: 'absolute', right: '10px', top: '4px' } },
+                                                _react2.default.createElement(
+                                                    'i',
+                                                    { className: 'fa fa-caret-up', 'aria-hidden': 'true', style: { display: 'block', fontSize: '18px', color: item.asc ? t.PRIMARY_COLOR : t.GRAY_BOLD } },
+                                                    ' '
+                                                ),
+                                                _react2.default.createElement(
+                                                    'i',
+                                                    { className: 'fa fa-caret-down', 'aria-hidden': 'true', style: { display: 'block', fontSize: '18px', color: item.desc ? t.PRIMARY_COLOR : t.GRAY_BOLD, transform: 'translate(0,-7px)' } },
+                                                    ' '
+                                                )
+                                            ) : null
                                         );
                                     }
                                 })
@@ -420,9 +429,8 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
                                 null,
                                 _react2.default.createElement(
                                     'td',
-                                    { colSpan: columns.length + (select ? 1 : 0),
-                                        style: { padding: '5rem 0', textAlign: 'center', backgroundColor: t.WHITE } },
-                                    _react2.default.createElement('img', { src: _no_result2.default })
+                                    { colSpan: columns.length + (select ? 1 : 0), style: { height: '18rem' }, className: 'no-result-img' },
+                                    ' '
                                 )
                             )
                         )
