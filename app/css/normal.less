@@ -307,7 +307,7 @@
 }
 
 //Notification
-.notification-container{
+#notification-container{
   position: fixed;
   top: 4rem;
   left: 50%;
@@ -324,12 +324,10 @@
   from { transform:scale(1); }
   to{ transform:scale(0); }
 }
-.fade-zoom-in-leave-active{
-  animation:fadeZoomOut .5s ease;
-}
 .fade-zoom-in-enter-active{
-  animation:fadeZoomIn .5s ease;
+  animation:fadeZoomIn .5s ease,fadeZoomOut .5s ease 2.5s;
 }
+
 .fade-zoom-in-enter{
   transform:scale(0);
 }

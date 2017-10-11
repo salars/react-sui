@@ -1,1 +1,1 @@
-export { default,success,danger,warning,info } from './Notification';
+export { success,danger,warning,info } from './Notification';
