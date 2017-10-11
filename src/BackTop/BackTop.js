@@ -13,7 +13,7 @@ class BackTop extends Component {
     };
 
     onScroll() {
-        let top = document.body.scrollTop;
+        let top = document.documentElement.scrollTop;
         if (top > scrollTop) {
             this.setState({show: true});
         } else {
