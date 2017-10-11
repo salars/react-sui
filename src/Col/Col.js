@@ -10,7 +10,7 @@ class Col extends Component {
     };
     getClassName(){
         const props = this.props;
-        return ['lg','md','sm','xl'].map((item)=>{
+        return ['lg','md','sm','xs'].map((item)=>{
            if(props[item]) {
                return `col-${item}-${props[item]}`;
            }else{
