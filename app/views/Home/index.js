@@ -20,6 +20,7 @@ import TextArea from 'react-sui/TextArea';
 import TagSelect from 'react-sui/TagSelect';
 import Switch from 'react-sui/Switch';
 import BackTop from 'react-sui/BackTop';
+import SideLabel from 'react-sui/SideLabel';
 import { success, confirm } from 'react-sui/PopUp';
 import * as N from "react-sui/Notification";
 
@@ -458,6 +459,17 @@ export default class Home extends React.Component {
                             </Panel>
                         </Col>
                     </Row>
+
+                    <Row>
+                        <Col md="12">
+                            <Panel title="SideLabel">
+                                <SideLabel label='Command'/>
+                                <SideLabel label='Perfect'/>
+                                <SideLabel label='Response'/>
+                            </Panel>
+                        </Col>
+                    </Row>
+
                     <Row gutter>
                         <Col md="12">
                             <Panel title="PopUp">
