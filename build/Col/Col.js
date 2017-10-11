@@ -37,7 +37,7 @@ var Col = function (_Component) {
         key: 'getClassName',
         value: function getClassName() {
             var props = this.props;
-            return ['lg', 'md', 'sm', 'xl'].map(function (item) {
+            return ['lg', 'md', 'sm', 'xs'].map(function (item) {
                 if (props[item]) {
                     return 'col-' + item + '-' + props[item];
                 } else {
