@@ -21,6 +21,7 @@ import TagSelect from 'react-sui/TagSelect';
 import Switch from 'react-sui/Switch';
 import BackTop from 'react-sui/BackTop';
 import { success, confirm } from 'react-sui/PopUp';
+import * as N from "react-sui/Notification";
 
 const ColorBlock = (props) => {
     return (
@@ -78,6 +79,10 @@ export default class Home extends React.Component {
     // componentWillUpdate(nextProps, nextState) {
     //     console.log("new state get: " + nextState.file);
     // }
+
+    showNotification(type,msg){
+
+    }
 
     render() {
         return (
@@ -463,6 +468,18 @@ export default class Home extends React.Component {
                                             label="点击弹窗" type="primary">
                                     </Button>
                                 </Section>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="Notification">
+                                <ButtonGroup>
+                                    <Button onClick={ _=>N.warning('Notification Warning') } label="Warning" type="warning"/>
+                                    <Button onClick={ _=>N.success('Notification Success') } label="Success" type="success"/>
+                                    <Button onClick={ _=>N.danger('Notification Danger') } label="Danger" type="danger"/>
+                                    <Button onClick={ _=>N.info('Notification Info') } label="Info" type="info"/>
+                                </ButtonGroup>
                             </Panel>
                         </Col>
                     </Row>

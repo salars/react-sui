@@ -305,3 +305,31 @@
     background-color: rgba(0,0,0,0.5);
   }
 }
+
+//Notification
+.notification-container{
+  position: fixed;
+  top: 4rem;
+  left: 50%;
+  width: 18rem;
+  text-align: center;
+  word-break: break-all;
+  transform: translate(-50%,0);
+}
+@keyframes fadeZoomIn{
+  from { transform:scale(0); }
+  to{ transform:scale(1); }
+}
+@keyframes fadeZoomOut{
+  from { transform:scale(1); }
+  to{ transform:scale(0); }
+}
+.fade-zoom-in-leave-active{
+  animation:fadeZoomOut .5s ease;
+}
+.fade-zoom-in-enter-active{
+  animation:fadeZoomIn .5s ease;
+}
+.fade-zoom-in-enter{
+  transform:scale(0);
+}

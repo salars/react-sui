@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { composeTheme,getColorByType } from '../helpers';
 import { autobind } from 'core-decorators';
 import ReactDOM from 'react-dom';
-import './style.less';
 @autobind
 class Notification extends Component {
     static props = {
@@ -14,10 +13,16 @@ class Notification extends Component {
         type: 'info',
         msg: '',
     };
+    componentDidMount(){
+        let node = this.refs.notification;
+        setTimeout(_=>{
+            document.getElementsByClassName('notification-container')[0].removeChild(node.parentNode)
+        },3000);
+    }
     render(){
         const { type,msg } = this.props;
         return (
-            <div className={ 'alert alert-'+type }>{ msg }</div>
+            <div className={ 'alert alert-' + type } ref='notification'>{ msg }</div>
         )
     }
 }
