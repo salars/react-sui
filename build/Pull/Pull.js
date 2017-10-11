@@ -3,14 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _helpers = require('../helpers');
 
 var _propTypes = require('prop-types');
 
@@ -24,55 +23,35 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var BreadCrumb = function (_Component) {
-    _inherits(BreadCrumb, _Component);
+var Pull = function (_Component) {
+    _inherits(Pull, _Component);
 
-    function BreadCrumb() {
-        _classCallCheck(this, BreadCrumb);
+    function Pull() {
+        _classCallCheck(this, Pull);
 
-        return _possibleConstructorReturn(this, (BreadCrumb.__proto__ || Object.getPrototypeOf(BreadCrumb)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Pull.__proto__ || Object.getPrototypeOf(Pull)).apply(this, arguments));
     }
 
-    _createClass(BreadCrumb, [{
+    _createClass(Pull, [{
         key: 'render',
         value: function render() {
-            var _props = this.props,
-                t = _props.t,
-                pathInfo = _props.pathInfo;
+            var float = this.props.float;
 
-            return pathInfo instanceof Array && pathInfo.length > 0 ? _react2.default.createElement(
-                'ul',
-                { className: 'breadcrumb', style: {
-                        backgroundColor: 'white'
-                    } },
-                pathInfo.map(function (item, i) {
-                    return _react2.default.createElement(
-                        'li',
-                        { className: 'breadcrumb-item ' + (item.url ? "" : ' active'), key: i, onClick: function onClick() {
-                                window.location.href = item.url;
-                            } },
-                        item.url ? _react2.default.createElement(
-                            'span',
-                            { style: {
-                                    color: t.BREAD_COLOR,
-                                    cursor: 'pointer'
-                                } },
-                            item.content
-                        ) : _react2.default.createElement(
-                            'span',
-                            null,
-                            item.content
-                        )
-                    );
-                })
-            ) : null;
+            return _react2.default.createElement(
+                'div',
+                { className: 'pull-' + float },
+                this.props.children
+            );
         }
     }]);
 
-    return BreadCrumb;
+    return Pull;
 }(_react.Component);
 
-BreadCrumb.props = {
-    pathInfo: _propTypes2.default.array
+Pull.props = {
+    float: _propTypes2.default.string
 };
-exports.default = (0, _helpers.composeTheme)(BreadCrumb);
+Pull.defaultProps = {
+    float: "left"
+};
+exports.default = Pull;

@@ -3,8 +3,6 @@ import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import {autobind} from 'core-decorators';
 import '../../app/css/normal.less';
-import Row from "../Row";
-import Col from "../Col";
 
 @autobind
 class FileUpload extends Component {

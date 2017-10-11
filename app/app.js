@@ -13,6 +13,7 @@ import "./css/style.less";
 export const browserHistory = createBrowserHistory();
 export const middleware = routerMiddleware(browserHistory);
 
+
 class MainApp extends React.Component {
     render() {
         return (
