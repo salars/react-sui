@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -18,10 +16,6 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _coreDecorators = require('core-decorators');
-
-require('../../app/css/normal.less');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30,66 +24,37 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var scrollTop = 100;
+var SideLabel = function (_Component) {
+    _inherits(SideLabel, _Component);
 
-var BackTop = (0, _coreDecorators.autobind)(_class = function (_Component) {
-    _inherits(BackTop, _Component);
+    function SideLabel() {
+        _classCallCheck(this, SideLabel);
 
-    function BackTop() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
-        _classCallCheck(this, BackTop);
-
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BackTop.__proto__ || Object.getPrototypeOf(BackTop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            show: false
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        return _possibleConstructorReturn(this, (SideLabel.__proto__ || Object.getPrototypeOf(SideLabel)).apply(this, arguments));
     }
 
-    _createClass(BackTop, [{
-        key: 'onScroll',
-        value: function onScroll() {
-            var top = document.documentElement.scrollTop;
-            if (top > scrollTop) {
-                this.setState({ show: true });
-            } else {
-                this.setState({ show: false });
-            }
-        }
-    }, {
-        key: 'goTop',
-        value: function goTop() {
-            document.documentElement.scrollTop = document.body.scrollTop = 0;
-        }
-    }, {
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            document.addEventListener("scroll", this.onScroll);
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            document.removeEventListener("scroll", this.onScroll);
-        }
-    }, {
+    _createClass(SideLabel, [{
         key: 'render',
         value: function render() {
-            var show = this.state.show;
+            var label = this.props.label;
 
             return _react2.default.createElement(
                 'div',
-                { className: 'back-top' + (show ? ' show' : ''), onClick: this.goTop },
-                _react2.default.createElement('i', { className: 'fa fa-chevron-up', 'aria-hidden': 'true', style: { fontSize: '1.4rem', color: 'rgb(54, 155, 233)' } })
+                { style: { marginBottom: '1rem' } },
+                _react2.default.createElement('span', { style: { width: '.35rem', height: '1.25rem', background: '#34bf98', display: 'inline-block', verticalAlign: 'middle', marginRight: '.3rem' } }),
+                _react2.default.createElement(
+                    'span',
+                    { style: { fontSize: '.9rem' } },
+                    label
+                )
             );
         }
     }]);
 
-    return BackTop;
-}(_react.Component)) || _class;
+    return SideLabel;
+}(_react.Component);
 
-exports.default = (0, _helpers.composeTheme)(BackTop);
+SideLabel.props = {
+    label: _propTypes2.default.string
+};
+exports.default = (0, _helpers.composeTheme)(SideLabel);
