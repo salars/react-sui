@@ -16,6 +16,7 @@ import Radio from 'react-sui/Radio';
 import Select from 'react-sui/Select';
 import FileUpload from 'react-sui/FileUpload';
 import Input from 'react-sui/Input';
+import Collapse from  'react-sui/Collapse';
 import TextArea from 'react-sui/TextArea';
 import TagSelect from 'react-sui/TagSelect';
 import Switch from 'react-sui/Switch';
@@ -492,6 +493,15 @@ export default class Home extends React.Component {
                                     <Button onClick={ _=>N.danger('Notification Danger') } label="Danger" type="danger"/>
                                     <Button onClick={ _=>N.info('Notification Info') } label="Info" type="info"/>
                                 </ButtonGroup>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="Collapse">
+                                <Collapse msgs={ [{title: "TITLE One", info: "here is content ...."},
+                                    {title: "TITLE Second", info: "here is content ...."}
+                                ]}/>
                             </Panel>
                         </Col>
                     </Row>

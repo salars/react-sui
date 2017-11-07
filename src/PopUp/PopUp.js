@@ -118,7 +118,7 @@ export const info = (msg, fn) => {
     ]);
 };
 export const confirm = (msg, fn) => {
-    notif(msg, '选择', [
+    notif(msg, '提示信息', [
         {
             text: "确定",
             action(fnClose) {
