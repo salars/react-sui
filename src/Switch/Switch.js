@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { composeTheme,getColorByType } from '../helpers';
 import { autobind } from 'core-decorators';
-import '../../app/css/normal.less';
 
 @autobind
 class Switch extends Component {

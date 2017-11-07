@@ -3,7 +3,6 @@ import React , { Component } from 'react';
 import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import { autobind } from 'core-decorators';
-import '../../app/css/normal.less';
 @autobind
 class Radio extends Component {
     static props = {
