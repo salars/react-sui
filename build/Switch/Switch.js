@@ -22,8 +22,6 @@ var _helpers = require('../helpers');
 
 var _coreDecorators = require('core-decorators');
 
-require('../../app/css/normal.less');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }

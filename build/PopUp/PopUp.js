@@ -187,7 +187,7 @@ var info = exports.info = function info(msg, fn) {
     }]);
 };
 var confirm = exports.confirm = function confirm(msg, fn) {
-    notif(msg, '选择', [{
+    notif(msg, '提示信息', [{
         text: "确定",
         action: function action(fnClose) {
             fn && fn(fnClose);
