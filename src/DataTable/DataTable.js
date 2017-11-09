@@ -228,6 +228,7 @@ class DataTable extends Component {
                     {
                         buttons && buttons.map((item, i) => {
                             return <span key={i}
+                                         className={ item.className || '' }
                                          style={{
                                              display: ( item.className != 'select-none-hide' || selectArr.length != 0 ) ? 'inline-block' : 'none'
                                          }}
