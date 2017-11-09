@@ -317,6 +317,7 @@ var DataTable = (0, _coreDecorators.autobind)(_class = function (_Component) {
                         return _react2.default.createElement(
                             'span',
                             { key: i,
+                                className: item.className || '',
                                 style: {
                                     display: item.className != 'select-none-hide' || selectArr.length != 0 ? 'inline-block' : 'none'
                                 },
