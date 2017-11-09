@@ -13,7 +13,7 @@ class CheckBox extends Component {
     };
     check() {
         const {name, fnClick, checked} = this.props;
-        fnClick && fnClick(name,!checked)
+        fnClick && fnClick(name,!checked);
     };
 
     render() {
