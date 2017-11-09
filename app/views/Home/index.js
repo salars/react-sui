@@ -273,6 +273,11 @@ export default class Home extends React.Component {
                                         {label: "option2"},
                                         {label: "option3"},
                                     ]}/>
+                                    <Dropdown label="warning" type="warning" size="sm" options={[
+                                        {label: "option1"},
+                                        {label: "option2"},
+                                        {label: "option3"},
+                                    ]} hover={true} />
                                 </Section>
                                 <Section title="direction split">
                                     <Dropdown label="Dropup" up split options={[

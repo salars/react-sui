@@ -74,12 +74,16 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            document.body.addEventListener('click', this.globalEventHandler);
+            var hover = this.props.hover;
+
+            !hover && document.body.addEventListener('click', this.globalEventHandler);
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            document.body.removeEventListener('click', this.globalEventHandler);
+            var hover = this.props.hover;
+
+            !hover && document.body.removeEventListener('click', this.globalEventHandler);
         }
     }, {
         key: 'render',
@@ -96,12 +100,13 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
                 caret = _props.caret,
                 right = _props.right,
                 up = _props.up,
-                iconName = _props.iconName;
+                iconName = _props.iconName,
+                hover = _props.hover;
             var open = this.state.open;
 
             return _react2.default.createElement(
                 'div',
-                { className: (up ? "dropup " : "dropdown ") + (open ? 'open' : ''), style: { display: 'inline-block' } },
+                { className: (up ? "dropup " : "dropdown ") + (open ? 'open' : '') + (hover ? " hover-active" : ""), style: { display: 'inline-block' } },
                 _react2.default.createElement(
                     'div',
                     { ref: 'dropDownHandler' },
@@ -158,7 +163,8 @@ Dropdown.props = {
     right: _propTypes2.default.bool,
     up: _propTypes2.default.bool,
     toggle: _propTypes2.default.bool,
-    iconName: _propTypes2.default.string
+    iconName: _propTypes2.default.string,
+    hover: _propTypes2.default.bool
 };
 Dropdown.defaultProps = {
     type: 'default',
@@ -168,6 +174,7 @@ Dropdown.defaultProps = {
     right: false,
     up: false,
     toggle: false,
-    toggleStatus: false
+    toggleStatus: false,
+    hover: false
 };
 exports.default = (0, _helpers.composeTheme)(Dropdown);
