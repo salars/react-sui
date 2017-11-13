@@ -10,6 +10,7 @@ import defaultConfig from './config';
 import {autobind} from 'core-decorators';
 @autobind
 class DataTable extends Component {
+    dataTable = null;
     static props = {
         columns: PropTypes.array,
         // data: PropTypes.array,
@@ -42,7 +43,7 @@ class DataTable extends Component {
     };
 
     componentWillMount() {
-        const mergeConfig = Object.assign({}, defaultConfig, this.props.config);
+        let mergeConfig = Object.assign({}, defaultConfig, this.props.config);
         this.setState({config: mergeConfig}, () => {
             this.getData(1, this.state.config.pageLength);
         });
@@ -85,13 +86,13 @@ class DataTable extends Component {
 
             //模拟数据
             let data = [];
-            const total = 0;
-            /*for (let i = 0; i < pageSize; i++) {
+            const total = 104;
+            for (let i = 0; i < pageSize; i++) {
                 const sum = (pageNum - 1) * pageSize + i + 1;
                 if (sum <= total) {
                     data.push({id: sum, name: 'test' + sum, nickName: 'nick' + sum, tel: '12341341234'});
                 }
-            }*/
+            }
             const {checkAll} = this.state;
 
             let arr = [];
@@ -196,7 +197,7 @@ class DataTable extends Component {
 
     showDetailInfo(e,val){
         e.stopPropagation();
-        let container = this.refs.dataTable.parentNode.getElementsByClassName('simple-info-container')[0];
+        let container = this.dataTable.parentNode.getElementsByClassName('simple-info-container')[0];
         const { offsetLeft, offsetTop } = e.target;
         container.style.display = 'block';
         container.innerHTML = val;
@@ -216,7 +217,7 @@ class DataTable extends Component {
             pageLengthConfig.push({label: config.lengthMenu[i], value: config.lengthMenu[i]});
         }
         return (
-            <div className="data-table" ref="dataTable">
+            <div className="data-table" ref={ (dataTable)=>this.dataTable=dataTable }>
                 <div style={{marginBottom: t.MARGIN_MEDIUM}} className="buttons">
                     {
                         selectAllButton ?
