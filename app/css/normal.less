@@ -207,6 +207,21 @@
 //DataTable样式
 .data-table-container{
   .data-table {
+    .table-striped>tbody>tr:nth-of-type(even) {
+      background-color: #eef6fd;
+    }
+    .table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #fff;
+    }
+    .table >thead>tr{
+      background-color: #f5f8fd;
+      th{
+        border-bottom-width: .05rem;
+      }
+    }
+    .table >tbody tr:hover{
+      background-color: #c0e0f8;
+    }
     .buttons {
       > span,.dropdown .btn{
         display: inline-block;

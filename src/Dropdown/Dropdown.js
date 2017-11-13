@@ -5,6 +5,7 @@ import {Button, ButtonGroup} from 'react-sui/Button';
 import { autobind } from 'core-decorators';
 @autobind
 class Dropdown extends Component {
+    dropDownHandler = null;
     static props = {
         type: PropTypes.string,
         size: PropTypes.string,
@@ -41,7 +42,7 @@ class Dropdown extends Component {
     }
 
     globalEventHandler(e){
-        if(e.path.includes(this.refs.dropDownHandler)){
+        if(e.path.includes(this.dropDownHandler)){
             this.setState(state=>{
                 return {open: !state.open}
             });
@@ -60,7 +61,7 @@ class Dropdown extends Component {
         const { open } = this.state;
         return (
             <div className={(up ? "dropup " : "dropdown ") + (open ? 'open':'') } style={ {display: 'inline-block'} }>
-                <div ref="dropDownHandler">
+                <div ref={ (dropDownHandler)=>this.dropDownHandler=dropDownHandler }>
                 {
                     split ?
                         <ButtonGroup>
@@ -89,7 +90,7 @@ class Dropdown extends Component {
                 <ul className={"dropdown-menu " + (right ? "dropdown-menu-right" :"")}>
                 {
                     options.map((item,i)=>{
-                        return <li key={ i } ref="li" className={"dropdown-li "+(item.disabled ? "disabled":"")} style={ {cursor: 'pointer'} } onClick={ _=>this.itemClick(item) }>
+                        return <li key={ i } className={"dropdown-li "+(item.disabled ? "disabled":"")} style={ {cursor: 'pointer'} } onClick={ _=>this.itemClick(item) }>
                             <a style={item.toggle? {color:'#aaa'}:{}}>
                                 { item.iconName ? <i className={"fa fa-"+item.iconName} aria-hidden="true" style={{display:'inline-block',width: '25px'}}></i> : null }
                                 {item.label}
