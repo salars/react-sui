@@ -1,7 +1,17 @@
 {
   "presets": [
-    "react",
-    "es2015"
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        }
+      }
+    ],
+    "react"
   ],
   "env": {
     "development": {
@@ -11,10 +21,11 @@
     }
   },
   "plugins": [
-    "syntax-dynamic-import",
+    "syntax-object-rest-spread",
+    "syntax-class-properties",
+    "syntax-decorators",
     "transform-object-rest-spread",
-    "transform-class-properties",
-    "transform-decorators-legacy"
+    "transform-class-properties"
   ]
 }
 

@@ -25,11 +25,11 @@ class BackTop extends Component {
     }
 
     componentWillMount() {
-        document.addEventListener("scroll", this.onScroll);
+        document.addEventListener("scroll", this.onScroll.bind(this));
     }
 
     componentWillUnmount() {
-        document.removeEventListener("scroll", this.onScroll);
+        document.removeEventListener("scroll", this.onScroll.bind(this));
     }
 
     render() {
