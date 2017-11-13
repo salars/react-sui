@@ -54,12 +54,12 @@ class Dropdown extends Component {
     }
     componentDidMount(){
         const { hover } = this.props;
-        this.globalEventHandlerBinder = this.globalEventHandler.bind(this);
-        !hover && document.body.addEventListener('click',this.globalEventHandlerBinder);
+        //this.globalEventHandlerBinder = this.globalEventHandler.bind(this);
+        !hover && document.body.addEventListener('click',this.globalEventHandler);
     }
     componentWillUnmount(){
         const { hover } = this.props;
-        !hover && document.body.removeEventListener('click',this.globalEventHandlerBinder);
+        !hover && document.body.removeEventListener('click',this.globalEventHandler);
     }
     render(){
         const { type,t,size,label,options,split,caret,right,up,iconName,hover } = this.props;
