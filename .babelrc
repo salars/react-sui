@@ -24,6 +24,7 @@
     "syntax-object-rest-spread",
     "syntax-class-properties",
     "syntax-decorators",
+    "transform-decorators-legacy",
     "transform-object-rest-spread",
     "transform-class-properties"
   ]

@@ -64,6 +64,10 @@ class DataTable extends Component {
         }
     }
 
+    componentWillReceiveProps(nextState,nextProps){
+            // url data
+    }
+
     getData(pageNum, pageSize) {
         //根据url获取数据......
         if (this.props.url) {
