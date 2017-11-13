@@ -23,7 +23,7 @@ class Select extends Component {
     };
 
     componentWillMount(){
-        document.body.addEventListener('click', this.bodyClickEventHandler);
+        document.body.addEventListener('click', this.bodyClickEventHandler.bind(this));
         const {name, config, change, value} = this.props;
         let valueMap1 = {};
         if (config && config.options) {
@@ -96,10 +96,10 @@ class Select extends Component {
         return val === "" || val === null || val === undefined;
     };
     componentDidMount(){
-        document.body.addEventListener('click',this.bodyClickEventHandler);
+        document.body.addEventListener('click',this.bodyClickEventHandler.bind(this));
     }
     componentWillUnmount(){
-        document.body.removeEventListener('click', this.bodyClickEventHandler);
+        document.body.removeEventListener('click', this.bodyClickEventHandler.bind(this));
     }
 
     render() {

@@ -17,6 +17,7 @@ class Dropdown extends Component {
         up: PropTypes.bool,
         toggle: PropTypes.bool,
         iconName: PropTypes.string,
+        hover:PropTypes.bool
     };
     static defaultProps = {
         type: 'default',
@@ -27,6 +28,7 @@ class Dropdown extends Component {
         up: false,
         toggle: false,
         toggleStatus: false,
+        hover:false
     };
     state = {
         open: false
@@ -51,16 +53,19 @@ class Dropdown extends Component {
         }
     }
     componentDidMount(){
-        document.body.addEventListener('click',this.globalEventHandler);
+        const { hover } = this.props;
+        //this.globalEventHandlerBinder = this.globalEventHandler.bind(this);
+        !hover && document.body.addEventListener('click',this.globalEventHandler);
     }
     componentWillUnmount(){
-       document.body.removeEventListener('click',this.globalEventHandler);
+        const { hover } = this.props;
+        !hover && document.body.removeEventListener('click',this.globalEventHandler);
     }
     render(){
-        const { type,t,size,label,options,split,caret,right,up,iconName } = this.props;
+        const { type,t,size,label,options,split,caret,right,up,iconName,hover } = this.props;
         const { open } = this.state;
         return (
-            <div className={(up ? "dropup " : "dropdown ") + (open ? 'open':'') } style={ {display: 'inline-block'} }>
+            <div className={(up ? "dropup " : "dropdown ") + (open ? 'open':'') + (hover ? " hover-active": "" ) } style={ {display: 'inline-block'} }>
                 <div ref={ (dropDownHandler)=>this.dropDownHandler=dropDownHandler }>
                 {
                     split ?

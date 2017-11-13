@@ -14,7 +14,7 @@ class RadioItem extends Component {
         const {checked,click,data} = this.props;
         const { label,value,disabled,errorInfo } = data;
         return(
-            <div className={"radio-item "+(checked ? " checked":"")+(disabled?" disabled":'') } onClick={ disabled?'':_ => { click && click(value) } } >
+            <div className={"radio-item "+(checked ? " checked":"")+(disabled?" disabled":'') } onClick={ _  => { !disabled && click && click(value) } } >
                 {
                     disabled?
                         <span style={{position:'relative'}} className='radio-disabled'>
