@@ -21,7 +21,7 @@ class Select extends Component {
     };
 
     componentWillMount(){
-        document.body.addEventListener('click', this.bodyClickEventHandler);
+        document.body.addEventListener('click', this.bodyClickEventHandler.bind(this));
         const {name, config, change, value} = this.props;
         let valueMap1 = {};
         if (config && config.options) {
