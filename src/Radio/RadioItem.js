@@ -17,9 +17,9 @@ class RadioItem extends Component {
             <div className={"radio-item "+(checked ? " checked":"")+(disabled?" disabled":'') } onClick={ disabled?'':_ => { click && click(value) } } >
                 {
                     disabled?
-                        <span className='radio-span'>
-                            <span>{ label }</span>
-                            <span>{ errorInfo }</span>
+                        <span style={{position:'relative'}} className='radio-disabled'>
+                            <span className='radio-label'>{ label }</span>
+                            <span style={{position:'absolute',top:'.5rem',right:'.4rem',display:'inlineblock',width:'3rem'}} className='radio-error'>{ errorInfo }</span>
                         </span>
                         :
                         label
