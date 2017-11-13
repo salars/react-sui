@@ -6,10 +6,16 @@ const themeStore = observable({
     current:"default",
     themes:{
       default:defaultTheme,
-        custom:customTheme
+        custom:customTheme,
+        personalize:{}
     },
     get theme(){
         return this.themes[this.current];
+    },
+    applyTheme(theme){
+        const PERSONAL = 'personalize';
+        this.themes[PERSONAL] = theme;
+        this.current = PERSONAL;
     }
 });
 

@@ -8,7 +8,10 @@ import {Route} from 'react-router';
 import App from 'views/App';
 import store from './store';
 import SuiThemeProvider from 'react-sui/SuiThemeProvider';
+import themeStore from 'react-sui/store/theme';
 import "./css/style.less";
+import * as theme from './theme';
+themeStore.applyTheme(theme);
 
 export const browserHistory = createBrowserHistory();
 export const middleware = routerMiddleware(browserHistory);
