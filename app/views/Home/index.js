@@ -371,7 +371,7 @@ export default class Home extends React.Component {
                                     }} config={{
                                         options: [{value: 0, label: 'First Blood',disabled:true,errorInfo:'haha'}, {
                                             value: 1,
-                                            label: 'Double Kill',disabled:true
+                                            label: 'Double Kill',disabled:true,errorInfo:'未验证'
                                         }, {value: 2, label: 'Triple Kill'}, {
                                             value: 3,
                                             label: 'Quadra Kill'
