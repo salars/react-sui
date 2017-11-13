@@ -6,6 +6,7 @@ import {autobind} from 'core-decorators';
 
 @autobind
 class Input extends Component {
+    inputText = null;
     static props = {
         name: PropTypes.string,
         value: PropTypes.string,
@@ -28,7 +29,7 @@ class Input extends Component {
         const {name, change, maxlength} = this.props;
         if (maxlength && value.length > maxlength) {
             let valStr = value.slice(0, maxlength);
-            this.refs.input.value = valStr;
+            this.inputText.value = valStr;
             change(name, value);
         } else {
             change(name, value);
@@ -57,7 +58,7 @@ class Input extends Component {
             <div style={{
                 position: 'relative'
             }}>
-                <input type={type || "text"} value={newValue} ref="input" className="form-control"
+                <input type={type || "text"} value={newValue} ref={ (input)=>{ this.inputText = input } } className="form-control"
                        onBlur={this.onChange} maxLength={maxlength || 999} onChange={this.onChange}
                        placeholder={placeholder} step="any" min={min}/>
                 <span style={{

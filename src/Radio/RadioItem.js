@@ -6,16 +6,24 @@ import {autobind} from 'core-decorators';
 @autobind
 class RadioItem extends Component {
     static props={
-        data:PropTypes.string,
+        data:PropTypes.object,
         click:PropTypes.func,
-        checked:PropTypes.bool
+        checked:PropTypes.bool,
     };
     render(){
         const {checked,click,data} = this.props;
-        const { label,value } = data;
+        const { label,value,disabled,errorInfo } = data;
         return(
-            <div className={"radio-item "+(checked ? " checked":"") } onClick={ _ => { click && click(value) }} >
-                { label }
+            <div className={"radio-item "+(checked ? " checked":"")+(disabled?" disabled":'') } onClick={ disabled?'':_ => { click && click(value) } } >
+                {
+                    disabled?
+                        <span className='radio-span'>
+                            <span>{ label }</span>
+                            <span>{ errorInfo }</span>
+                        </span>
+                        :
+                        label
+                }
             </div>
         )
     }
