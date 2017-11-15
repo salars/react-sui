@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import {autobind} from 'core-decorators';
-import '../../app/css/normal.less';
 
 @autobind
 class CheckBox extends Component {
@@ -14,7 +13,7 @@ class CheckBox extends Component {
     };
     check() {
         const {name, fnClick, checked} = this.props;
-        fnClick && fnClick(name,!checked)
+        fnClick && fnClick(name,!checked);
     };
 
     render() {

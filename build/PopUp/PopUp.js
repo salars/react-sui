@@ -7,8 +7,6 @@ exports.confirm = exports.info = exports.warning = exports.success = exports.err
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -33,7 +31,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PopUp = (0, _coreDecorators.autobind)(_class = function (_Component) {
+var PopUp = function (_Component) {
     _inherits(PopUp, _Component);
 
     function PopUp() {
@@ -127,7 +125,7 @@ var PopUp = (0, _coreDecorators.autobind)(_class = function (_Component) {
     }]);
 
     return PopUp;
-}(_react.Component)) || _class;
+}(_react.Component);
 
 PopUp.props = {
     msg: _propTypes2.default.string.isRequired,
@@ -187,7 +185,7 @@ var info = exports.info = function info(msg, fn) {
     }]);
 };
 var confirm = exports.confirm = function confirm(msg, fn) {
-    notif(msg, '选择', [{
+    notif(msg, '提示信息', [{
         text: "确定",
         action: function action(fnClose) {
             fn && fn(fnClose);

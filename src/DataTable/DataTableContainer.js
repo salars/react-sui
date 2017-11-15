@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {composeTheme} from '../helpers';
 import {autobind} from 'core-decorators';
-import '../../app/css/normal.less';
 
 @autobind
 class DataTableContainer extends Component {

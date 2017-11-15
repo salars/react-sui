@@ -3,7 +3,6 @@ import React , { Component } from 'react';
 import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import { autobind } from 'core-decorators';
-import '../../app/css/normal.less';
 @autobind
 class Radio extends Component {
     static props = {
@@ -16,13 +15,13 @@ class Radio extends Component {
         const { change,name } = this.props;
         change(name,value);
     }
-    componentWillMount(){
-        const { name, change, value, config } = this.props;
-        if(config.options&& config.options.length){
-            let val = config.options[0].value;
-            change(name,val);
-        }
-    }
+    // componentWillMount(){
+    //     const { name, change, value, config } = this.props;
+    //     if(config.options&&config.options.length){
+    //         let val = config.options[0].value;
+    //         change(name,val);
+    //     }
+    // }
     render() {
         const { value, config } = this.props;
         const { options } = config;

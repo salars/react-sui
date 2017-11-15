@@ -2,27 +2,28 @@ import React, {Component} from 'react';
 import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import {autobind} from 'core-decorators';
-import '../../app/css/normal.less';
 
 
 @autobind
 class Select extends Component {
+    selectInput = null;
     static props = {
         name: PropTypes.string,
         change: PropTypes.func,
         value: PropTypes.string,
         config: PropTypes.string,
         multiple: PropTypes.bool,
-        promiseValue: PropTypes.bool
+        promiseValue: PropTypes.bool,
+        readOnly:PropTypes.string
     };
 
     state = {
         valueMap: {},
-        showDropdown: false
+        showDropdown: false,
     };
 
     componentWillMount(){
-        document.body.addEventListener('click', this.bodyClickEventHandler);
+        document.body.addEventListener('click', this.bodyClickEventHandler.bind(this));
         const {name, config, change, value} = this.props;
         let valueMap1 = {};
         if (config && config.options) {
@@ -62,10 +63,10 @@ class Select extends Component {
         }
     }
 
-    onSelect(val){
+    onSelect(val,label){
         const {multiple, value, name, change} = this.props;
         if (!multiple) {
-            change(name, val);
+            change(name, val,label);
             return;
         }
         let newValue = value;
@@ -73,7 +74,7 @@ class Select extends Component {
             newValue = [];
         }
         newValue.push(val);
-        change(name, newValue);
+        change(name, newValue,label);
     };
     remove(v){
         const {multiple, value, name, change}  = this.props;
@@ -85,7 +86,7 @@ class Select extends Component {
         }
     };
     bodyClickEventHandler(e){
-        if(e.path.includes(this.refs.select)){
+        if(e.path.includes(this.selectInput)){
             return;
         }
         this.setState({showDropdown:false});
@@ -95,14 +96,14 @@ class Select extends Component {
         return val === "" || val === null || val === undefined;
     };
     componentDidMount(){
-        document.body.addEventListener('click',this.bodyClickEventHandler);
+        document.body.addEventListener('click',this.bodyClickEventHandler.bind(this));
     }
     componentWillUnmount(){
-        document.body.removeEventListener('click', this.bodyClickEventHandler);
+        document.body.removeEventListener('click', this.bodyClickEventHandler.bind(this));
     }
 
     render() {
-        const {config, value, multiple} = this.props;
+        const {config, value, multiple,readOnly} = this.props;
         const {valueMap, showDropdown} = this.state;
         const {placeholder, options} = config || {};
         let newOptions = options || [];
@@ -115,9 +116,9 @@ class Select extends Component {
             })
         }
         return (
-            <div ref='select' className={`form-control select ${showDropdown ? "open" : ''}`} onClick={() => {
+            <div ref={(select)=>{ this.selectInput = select }} className={`form-control select ${showDropdown ? "open" : ''}`} onClick={() => {
                 return this.setState({showDropdown:!showDropdown});
-            }}>
+            }} readOnly={readOnly}>
                 <div className="dropdown-toggle">
 
                     {
@@ -163,7 +164,7 @@ class Select extends Component {
                             {
                                 newOptions.map(
                                     (option,i) =>
-                                        <li onClick={ _=>{ this.onSelect(option.value) } } key={i}>
+                                        <li onClick={ _=>{ this.onSelect(option.value,option.label) } } key={i}>
                                             { option.label }
                                         </li>
                                 )

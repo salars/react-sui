@@ -34,9 +34,7 @@ var compose = function compose(_ref) {
         newProps = _objectWithoutProperties(_ref, ['t']);
 
     return function (BaseComponent) {
-        var _class;
-
-        var CompoundComponent = (0, _mobxReact.observer)(_class = function (_Component) {
+        var CompoundComponent = function (_Component) {
             _inherits(CompoundComponent, _Component);
 
             function CompoundComponent() {
@@ -54,7 +52,7 @@ var compose = function compose(_ref) {
             }]);
 
             return CompoundComponent;
-        }(_react.Component)) || _class;
+        }(_react.Component);
 
         return CompoundComponent;
     };

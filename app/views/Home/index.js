@@ -24,6 +24,7 @@ import BackTop from 'react-sui/BackTop';
 import SideLabel from 'react-sui/SideLabel';
 import { success, confirm } from 'react-sui/PopUp';
 import * as N from "react-sui/Notification";
+import '../../css/normal.less';
 import * as Notice from "react-sui/Notice";
 
 
@@ -47,17 +48,16 @@ export default class Home extends React.Component {
         val1: '',
         val2: '',
         val3: [],
-        val4: '',
-        index: 0,
+        val4: ''
     };
 
     radioChange(name, value) {
         this.setState({val: value});
     }
 
-    selectChange(name, value) {
+    selectChange(name, value,label) {
         this.setState({val1: value});
-        console.log(name, value);
+        console.log(name, value,label);
     }
 
     inputChange(name, value) {
@@ -276,6 +276,11 @@ export default class Home extends React.Component {
                                         {label: "option2"},
                                         {label: "option3"},
                                     ]}/>
+                                    <Dropdown label="warning" type="warning" size="sm" options={[
+                                        {label: "option1"},
+                                        {label: "option2"},
+                                        {label: "option3"},
+                                    ]} hover={true} />
                                 </Section>
                                 <Section title="direction split">
                                     <Dropdown label="Dropup" up split options={[
@@ -366,9 +371,9 @@ export default class Home extends React.Component {
                                     <Radio name="radio" value={this.state.val} change={(name, value) => {
                                         return this.radioChange(name, value)
                                     }} config={{
-                                        options: [{value: 0, label: 'First Blood'}, {
+                                        options: [{value: 0, label: 'First Blood',disabled:true,errorInfo:'haha'}, {
                                             value: 1,
-                                            label: 'Double Kill'
+                                            label: 'Double Kill',disabled:true,errorInfo:'未验证'
                                         }, {value: 2, label: 'Triple Kill'}, {
                                             value: 3,
                                             label: 'Quadra Kill'
@@ -382,15 +387,15 @@ export default class Home extends React.Component {
                         <Col md="12">
                             <Panel title="Select">
                                 <Section title="Select">
-                                    <Select name="select" value={this.state.val1} change={(name, value) => {
-                                        return this.selectChange(name, value)
+                                    <Select name="select" value={this.state.val1} change={(name, value,label) => {
+                                        return this.selectChange(name, value,label)
                                     }} config={{
                                         placeholder: '全部',
                                         options: [{value: 0, label: '上网'}, {value: 1, label: '聊天'}, {
                                             value: 2,
                                             label: '打游戏'
                                         }, {value: 3, label: '谈恋爱'}]
-                                    }}/>
+                                    }} readOnly='readOnly'/>
                                 </Section>
                             </Panel>
                         </Col>

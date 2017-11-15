@@ -42,11 +42,12 @@ var Button = function (_Component) {
                 label = _props.label,
                 onClick = _props.onClick,
                 className = _props.className,
-                t = _props.t;
+                t = _props.t,
+                disabled = _props.disabled;
 
             return _react2.default.createElement(
                 'button',
-                { className: 'btn btn-' + size + ' btn-' + type, onClick: onClick
+                { className: 'btn btn-' + size + ' btn-' + type + (disabled ? " btn-disabled" : ""), onClick: onClick
                 },
                 label,
                 this.props.children
@@ -60,7 +61,8 @@ var Button = function (_Component) {
 Button.props = {
     type: _propTypes2.default.string,
     label: _propTypes2.default.string,
-    onClick: _propTypes2.default.func
+    onClick: _propTypes2.default.func,
+    disabled: _propTypes2.default.bool
 };
 Button.defaultProps = {
     type: 'default',

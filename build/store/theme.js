@@ -20,10 +20,16 @@ var themeStore = (0, _mobx.observable)({
     current: "default",
     themes: {
         default: defaultTheme,
-        custom: customTheme
+        custom: customTheme,
+        personalize: {}
     },
     get theme() {
         return this.themes[this.current];
+    },
+    applyTheme: function applyTheme(theme) {
+        var PERSONAL = 'personalize';
+        this.themes[PERSONAL] = theme;
+        this.current = PERSONAL;
     }
 });
 

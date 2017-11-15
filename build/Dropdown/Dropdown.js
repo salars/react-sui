@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -30,7 +28,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
+var Dropdown = function (_Component) {
     _inherits(Dropdown, _Component);
 
     function Dropdown() {
@@ -74,12 +72,16 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            document.body.addEventListener('click', this.globalEventHandler);
+            var hover = this.props.hover;
+
+            !hover && document.body.addEventListener('click', this.globalEventHandler);
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            document.body.removeEventListener('click', this.globalEventHandler);
+            var hover = this.props.hover;
+
+            !hover && document.body.removeEventListener('click', this.globalEventHandler);
         }
     }, {
         key: 'render',
@@ -96,12 +98,13 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
                 caret = _props.caret,
                 right = _props.right,
                 up = _props.up,
-                iconName = _props.iconName;
+                iconName = _props.iconName,
+                hover = _props.hover;
             var open = this.state.open;
 
             return _react2.default.createElement(
                 'div',
-                { className: (up ? "dropup " : "dropdown ") + (open ? 'open' : ''), style: { display: 'inline-block' } },
+                { className: (up ? "dropup " : "dropdown ") + (open ? 'open' : '') + (hover ? " hover-active" : ""), style: { display: 'inline-block' } },
                 _react2.default.createElement(
                     'div',
                     { ref: 'dropDownHandler' },
@@ -146,7 +149,7 @@ var Dropdown = (0, _coreDecorators.autobind)(_class = function (_Component) {
     }]);
 
     return Dropdown;
-}(_react.Component)) || _class;
+}(_react.Component);
 
 Dropdown.props = {
     type: _propTypes2.default.string,
@@ -158,7 +161,8 @@ Dropdown.props = {
     right: _propTypes2.default.bool,
     up: _propTypes2.default.bool,
     toggle: _propTypes2.default.bool,
-    iconName: _propTypes2.default.string
+    iconName: _propTypes2.default.string,
+    hover: _propTypes2.default.bool
 };
 Dropdown.defaultProps = {
     type: 'default',
@@ -168,6 +172,7 @@ Dropdown.defaultProps = {
     right: false,
     up: false,
     toggle: false,
-    toggleStatus: false
+    toggleStatus: false,
+    hover: false
 };
 exports.default = (0, _helpers.composeTheme)(Dropdown);

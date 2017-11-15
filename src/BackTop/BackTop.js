@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {composeTheme} from "../helpers";
 import PropTypes from 'prop-types';
 import {autobind} from 'core-decorators';
-import '../../app/css/normal.less';
 
 const scrollTop = 100;
 
@@ -26,11 +25,11 @@ class BackTop extends Component {
     }
 
     componentWillMount() {
-        document.addEventListener("scroll", this.onScroll);
+        document.addEventListener("scroll", this.onScroll.bind(this));
     }
 
     componentWillUnmount() {
-        document.removeEventListener("scroll", this.onScroll);
+        document.removeEventListener("scroll", this.onScroll.bind(this));
     }
 
     render() {

@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -20,8 +18,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _coreDecorators = require('core-decorators');
 
-require('../../app/css/normal.less');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32,7 +28,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var scrollTop = 100;
 
-var BackTop = (0, _coreDecorators.autobind)(_class = function (_Component) {
+var BackTop = function (_Component) {
     _inherits(BackTop, _Component);
 
     function BackTop() {
@@ -90,6 +86,6 @@ var BackTop = (0, _coreDecorators.autobind)(_class = function (_Component) {
     }]);
 
     return BackTop;
-}(_react.Component)) || _class;
+}(_react.Component);
 
 exports.default = (0, _helpers.composeTheme)(BackTop);
