@@ -24,6 +24,8 @@ import BackTop from 'react-sui/BackTop';
 import SideLabel from 'react-sui/SideLabel';
 import { success, confirm } from 'react-sui/PopUp';
 import * as N from "react-sui/Notification";
+import * as Notice from "react-sui/Notice";
+
 
 const ColorBlock = (props) => {
     return (
@@ -45,7 +47,8 @@ export default class Home extends React.Component {
         val1: '',
         val2: '',
         val3: [],
-        val4: ''
+        val4: '',
+        index: 0,
     };
 
     radioChange(name, value) {
@@ -502,6 +505,17 @@ export default class Home extends React.Component {
                                 <Collapse msgs={ [{title: "TITLE One", info: "here is content ...."},
                                     {title: "TITLE Second", info: "here is content ...."}
                                 ]}/>
+                            </Panel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="12">
+                            <Panel title="Notifacation">
+                                <ButtonGroup>
+                                    <Button onClick={ _=>Notice.noticeSuccess('Notification Success') } label="Success" type="success"/>
+                                    <Button onClick={ _=>{ Notice.noticeWarning('Notification Warning'); } } label="Warning" type="warning"/>
+                                    <Button onClick={ _=>Notice.noticeInfo('Notification Info') } label="Info" type="info"/>
+                                </ButtonGroup>
                             </Panel>
                         </Col>
                     </Row>
