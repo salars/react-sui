@@ -519,7 +519,7 @@ export default class Home extends React.Component {
                             <Panel title="Notifacation">
                                 <ButtonGroup>
                                     <Button onClick={ _=>Notice.noticeSuccess('这里是content内容...', {}) } label="Success" type="success"/>
-                                    <Button onClick={ _=>{ Notice.noticeWarning('这里是content内容...', {time: "18:45:12", title: "错误标题"} ); } } label="Warning" type="warning"/>
+                                    <Button onClick={ _=>{ Notice.noticeWarning('这里是content内容...', {}); } } label="Warning" type="warning"/>
                                     <Button onClick={ _=>Notice.noticeInfo('这里是content内容...', {time: "17:12:12", title: "信息标题"} ) } label="Info" type="info"/>
                                 </ButtonGroup>
                             </Panel>

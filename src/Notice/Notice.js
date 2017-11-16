@@ -6,6 +6,7 @@ import { composeTheme,getColorByType } from '../helpers';
 import { autobind } from 'core-decorators';
 import ReactDOM from 'react-dom';
 
+const assert = require('assert');
 
 @autobind
 class Notice extends Component {
@@ -99,13 +100,12 @@ let noticeQueue;
 ReactDOM.render(<NoticeQueue ref={(ref)=>{ noticeQueue = ref }} />, document.getElementById('notice-container'));
 
 export const noticeSuccess = (msg, obj) => {
+   // assert.equal(typeof obj, 'object', `argument must be object, error type is ${typeof obj}`);
     noticeQueue.pushQueue(Object.assign({}, {msg,type:'success'}, (obj==null? {}:obj)))
-
 };
 
 export const noticeWarning = (msg, obj) => {
     noticeQueue.pushQueue(Object.assign({}, {msg,type:'warning'}, (obj==null? {}:obj)))
-
 };
 
 export const noticeInfo = (msg,obj)=>{
