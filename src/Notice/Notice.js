@@ -5,6 +5,8 @@ import success from './success_notice.png';
 import { composeTheme,getColorByType } from '../helpers';
 import { autobind } from 'core-decorators';
 import ReactDOM from 'react-dom';
+
+
 @autobind
 class Notice extends Component {
     static props = {
@@ -18,8 +20,8 @@ class Notice extends Component {
     static defaultProps = {
         type: 'info',
         msg: '',
-        title: "委托已提交",
-        timer: '16:39:38'
+        title: '',
+        timer: ''
     };
     state = {
         flag: true,
@@ -74,7 +76,10 @@ class NoticeQueue extends Component {
                 {
                     queue.map((obj)=>{
                          if(obj!=null) return(
-                            <Notice key={obj.keyGrowth} ins={obj.keyGrowth} type={obj.type} msg={obj.msg} clickNotice={(index) =>{ this.popQueue(index) }}  />
+                            <Notice key={obj.keyGrowth} ins={obj.keyGrowth}
+                                    type={obj.type} msg={obj.msg}
+                                    timer={obj.time} title={obj.title}
+                                    clickNotice={(index) =>{ this.popQueue(index) }}  />
                          );
                          return;
                     })
@@ -93,21 +98,16 @@ if(!document.getElementById('notice-container')){
 let noticeQueue;
 ReactDOM.render(<NoticeQueue ref={(ref)=>{ noticeQueue = ref }} />, document.getElementById('notice-container'));
 
-export const noticeDanger = (msg) => {
-    noticeQueue.pushQueue({msg,type:'danger'})
-};
-
-export const noticeSuccess = (msg) => {
-    noticeQueue.pushQueue({msg,type:'success'})
+export const noticeSuccess = (msg, obj) => {
+    noticeQueue.pushQueue(Object.assign({}, {msg,type:'success'}, (obj==null? {}:obj)))
 
 };
 
-export const noticeWarning = (msg) => {
-    console.log(123)
-    noticeQueue.pushQueue({msg,type:'warning'})
+export const noticeWarning = (msg, obj) => {
+    noticeQueue.pushQueue(Object.assign({}, {msg,type:'warning'}, (obj==null? {}:obj)))
 
 };
 
-export const noticeInfo = (msg,fn)=>{
-    noticeQueue.pushQueue({msg,type:'info'})
+export const noticeInfo = (msg,obj)=>{
+    noticeQueue.pushQueue(Object.assign({}, {msg,type:'info'}, (obj==null? {}:obj)))
 };

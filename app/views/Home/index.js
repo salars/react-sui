@@ -85,6 +85,7 @@ export default class Home extends React.Component {
     //     console.log("new state get: " + nextState.file);
     // }
 
+
     showNotification(type,msg){
 
     }
@@ -517,9 +518,9 @@ export default class Home extends React.Component {
                         <Col md="12">
                             <Panel title="Notifacation">
                                 <ButtonGroup>
-                                    <Button onClick={ _=>Notice.noticeSuccess('Notification Success') } label="Success" type="success"/>
-                                    <Button onClick={ _=>{ Notice.noticeWarning('Notification Warning'); } } label="Warning" type="warning"/>
-                                    <Button onClick={ _=>Notice.noticeInfo('Notification Info') } label="Info" type="info"/>
+                                    <Button onClick={ _=>Notice.noticeSuccess('这里是content内容...', {}) } label="Success" type="success"/>
+                                    <Button onClick={ _=>{ Notice.noticeWarning('这里是content内容...', {time: "18:45:12", title: "错误标题"} ); } } label="Warning" type="warning"/>
+                                    <Button onClick={ _=>Notice.noticeInfo('这里是content内容...', {time: "17:12:12", title: "信息标题"} ) } label="Info" type="info"/>
                                 </ButtonGroup>
                             </Panel>
                         </Col>
