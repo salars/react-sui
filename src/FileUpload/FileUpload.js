@@ -9,11 +9,12 @@ class FileUpload extends Component {
         path: "",
         fileType: "",
         fileSize: "",
-        file: ""
+        file: "",
+        fileBytes: null,
     };
 
     static Props = {
-        text: PropTypes.string,
+        name: PropTypes.string,
         fileType: PropTypes.string,
         requirePath: PropTypes.bool
     };
@@ -22,29 +23,40 @@ class FileUpload extends Component {
         let bol = (typefile.indexOf("jpeg") || typefile.indexOf("jpg") || typefile.indexOf("png"));
         return bol>-1;
     }
+
     handleDelete(e){
-        this.setState({path: "",
-            file: "",
-            fileType: "" });
+        const { name, change } = this.props;
+        this.setState({path: "", file: "", fileType: "", fileBytes: "" });
+        change(name, "");
     }
+
     handleChange(e) {
-        const {change, fileType} = this.props;
+        const {name, change, fileType} = this.props;
+
         e.preventDefault();
+
         const fileDetail = e.target.files;
+
         if (!fileDetail.length) {
             return;
         }
+
         let status = this.isImgFile(fileDetail[0].type);
+
         if(  (!status && fileType=="image") || (status && fileType=="file") ){
             console.log("类型要求不符");
             return
         }
-        this.setState({path: e.target.value, file: window.URL.createObjectURL(fileDetail[0]), fileType: fileDetail[0].type });
-        change("file", fileDetail[0]);
+
+        this.setState({path: e.target.value,
+            file: window.URL.createObjectURL(fileDetail[0]),
+            fileType: fileDetail[0].type,
+            fileBytes: fileDetail[0]});
+        change(name, fileDetail[0]);
     }
 
     render() {
-        const {t, text, fileType, requirePath} = this.props;
+        const {t, fileType, requirePath} = this.props;
         return (
             <div className="file-block">
                 <div className="file-left-con">
@@ -55,7 +67,7 @@ class FileUpload extends Component {
                                     <img width={"100%"} height={"100%"} src={this.state.file} alt=""/>
                                     <span className="file-actions">
                                         <span className="file--dele" onClick={this.handleDelete} >
-                                            <i className="fa fa-trash-o fa-fw fa-6" aria-hidden="true"></i>
+                                            {this.props.children}
                                         </span>
                                     </span>
                                 </div>

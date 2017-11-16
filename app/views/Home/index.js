@@ -71,7 +71,7 @@ export default class Home extends React.Component {
     }
 
     setMyState(key, value) {
-        console.log("setMyState");
+        console.log(key);
         console.log(value);
     }
 
@@ -427,10 +427,13 @@ export default class Home extends React.Component {
                         <Col md="12">
                             <Panel title="FileUpload">
                                 <Section title="FileUpload">
-                                    <FileUpload text="" fileType={"image"} requirePath={false}
+                                    <FileUpload name="内容" fileType={"image"}
+                                                requirePath={false}
                                                 change={(name, value) => {
                                                     return this.setMyState(name, value)
-                                                }}/>
+                                                }}>
+                                        <i className="fa fa-trash-o fa-fw fa-6" aria-hidden="true"></i>
+                                    </FileUpload>
                                 </Section>
                             </Panel>
                         </Col>
